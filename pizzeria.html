@@ -1,0 +1,1675 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Pizzeria La Tradizione a Selvino (BG) - Pizze artigianali a lievitazione naturale 48 ore, cotte nel forno a legna con ingredienti DOP selezionati.">
+    <meta name="keywords" content="pizzeria, pizza napoletana, forno a legna, lievitazione naturale, Selvino, Bergamo, pizza da asporto">
+    <title>Pizzeria La Tradizione | Pizzeria Artigianale a Selvino (BG)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary: #0f0c0a;
+            --secondary: #1a1613;
+            --accent-fire: #d62828;
+            --accent-gold: #f4a261;
+            --accent-bright: #ffb703;
+            --text-light: #ffffff;
+            --text-muted: #c3b8b0;
+            --fire-gradient: linear-gradient(135deg, #d62828 0%, #e76f51 50%, #f4a261 100%);
+            --gold-gradient: linear-gradient(135deg, #f4a261 0%, #ffb703 50%, #e76f51 100%);
+            --warm-glow: 0 0 25px rgba(231, 111, 81, 0.4);
+            --card-bg: linear-gradient(145deg, #1c1815, #26201b);
+        }
+
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: var(--primary);
+            color: var(--text-light);
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes zoomIn {
+            from { opacity: 0; transform: scale(0.85); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes floatEffect {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-12px) rotate(4deg); }
+        }
+
+        @keyframes floatSlow {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-18px) scale(1.04); }
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { box-shadow: 0 0 15px rgba(214, 40, 40, 0.4); }
+            50% { box-shadow: 0 0 35px rgba(244, 162, 97, 0.7); }
+        }
+
+        @keyframes rotateSlow {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes shimmerGradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes flameBorder {
+            0% { background-position: 0 0; }
+            100% { background-position: 60px 0; }
+        }
+
+        @keyframes rippleEffect {
+            0% { transform: scale(0); opacity: 0.8; }
+            100% { transform: scale(4); opacity: 0; }
+        }
+
+        .header { 
+            background: rgba(15, 12, 10, 0.9); 
+            padding: 1.1rem 2.5rem; 
+            position: fixed; 
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center;
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid rgba(244, 162, 97, 0.25);
+            transition: all 0.4s ease;
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        .header.scrolled {
+            padding: 0.8rem 2.5rem;
+            background: rgba(10, 8, 7, 0.97);
+            border-bottom-color: rgba(231, 111, 81, 0.5);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.9);
+        }
+
+        .logo h1 { 
+            font-family: 'Playfair Display', serif; 
+            color: var(--accent-gold); 
+            letter-spacing: 1.5px;
+            font-size: 1.8rem;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo h1 i {
+            font-size: 1.6rem;
+            color: var(--accent-fire);
+            animation: floatEffect 3s ease-in-out infinite;
+        }
+
+        .logo h1 span {
+            color: #ffffff;
+            transition: color 0.3s ease;
+        }
+
+        .logo:hover h1 span {
+            color: var(--accent-bright);
+        }
+
+        .nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            margin: 0;
+            padding: 0;
+            align-items: center;
+        }
+
+        .nav a {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 0.4rem 0;
+            text-transform: uppercase;
+            font-size: 0.95rem;
+            letter-spacing: 1.5px;
+            font-weight: 600;
+        }
+
+        .nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--fire-gradient);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translateX(-50%);
+        }
+
+        .nav a:hover {
+            color: var(--accent-bright);
+        }
+
+        .nav a:hover::after {
+            width: 100%;
+        }
+
+        .btn-prenota {
+            background: var(--fire-gradient);
+            background-size: 200% 200%;
+            color: #ffffff !important;
+            font-weight: 700;
+            padding: 0.65rem 1.6rem !important;
+            border-radius: 30px;
+            transition: all 0.3s ease !important;
+            animation: pulseGlow 3s infinite, shimmerGradient 4s ease infinite;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(214, 40, 40, 0.4);
+        }
+
+        .btn-prenota::after {
+            display: none !important;
+        }
+
+        .btn-prenota:hover {
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: var(--warm-glow);
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            background: linear-gradient(135deg, rgba(15,12,10,0.92), rgba(15,12,10,0.82)),
+                        url('https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+            padding-top: 100px;
+            overflow: hidden;
+        }
+
+        .pizza-stripe-accent {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 6px;
+            height: 100%;
+            background: repeating-linear-gradient(
+                45deg,
+                #d62828,
+                #d62828 15px,
+                #ffffff 15px,
+                #ffffff 30px,
+                #2b9348 30px,
+                #2b9348 45px
+            );
+            background-size: 100px 100px;
+            animation: flameBorder 3s linear infinite;
+            z-index: 10;
+        }
+
+        .hero-floating-icon {
+            position: absolute;
+            color: rgba(244, 162, 97, 0.08);
+            font-size: 13rem;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .hero-floating-icon.icon-1 {
+            top: 15%;
+            left: 5%;
+            animation: floatSlow 6s ease-in-out infinite;
+        }
+
+        .hero-floating-icon.icon-2 {
+            bottom: 15%;
+            right: 5%;
+            animation: floatSlow 8s ease-in-out infinite 1s;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 880px;
+            padding: 2.5rem;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(214, 40, 40, 0.2);
+            border: 1px solid var(--accent-fire);
+            color: var(--accent-bright);
+            padding: 0.5rem 1.4rem;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .hero h2 {
+            font-size: 4.8rem;
+            font-family: 'Playfair Display', serif;
+            background: var(--gold-gradient);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: fadeInUp 1s ease-out, shimmerGradient 6s ease infinite;
+            margin-bottom: 1rem;
+            text-shadow: 0 10px 20px rgba(0,0,0,0.6);
+            line-height: 1.1;
+        }
+
+        .hero p {
+            font-size: 1.45rem;
+            margin: 1.2rem 0 2.5rem;
+            animation: fadeInUp 1s ease-out 0.3s backwards;
+            color: #e2d9d2;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        .btn-ripple {
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+        }
+
+        .ripple {
+            position: absolute;
+            border-radius: 50%;
+            transform: scale(0);
+            animation: rippleEffect 0.6s linear;
+            background-color: rgba(255, 255, 255, 0.4);
+            pointer-events: none;
+        }
+
+        .btn-hero {
+            background: var(--fire-gradient);
+            background-size: 200% 200%;
+            color: #ffffff;
+            padding: 1.2rem 3.2rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            animation: fadeInUp 1s ease-out 0.6s backwards, shimmerGradient 4s ease infinite;
+            display: inline-block;
+            border: 2px solid transparent;
+            text-transform: uppercase;
+            box-shadow: 0 8px 25px rgba(214, 40, 40, 0.45);
+        }
+
+        .btn-hero:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 35px rgba(244, 162, 97, 0.6);
+            border-color: #ffffff;
+            color: #ffffff;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3.5rem;
+            margin-top: 4rem;
+            animation: fadeInUp 1s ease-out 0.9s backwards;
+        }
+
+        .stat {
+            text-align: center;
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .stat:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            color: var(--accent-bright);
+            display: block;
+            text-shadow: 0 0 15px rgba(244, 162, 97, 0.4);
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: #b0a59e;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: 600;
+        }
+
+        .hero-scroll {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: floatEffect 2s ease-in-out infinite;
+            color: var(--accent-gold);
+            font-size: 2.2rem;
+            cursor: pointer;
+            z-index: 5;
+            transition: color 0.3s ease;
+        }
+
+        .hero-scroll:hover {
+            color: #ffffff;
+        }
+
+        .section {
+            padding: 6.5rem 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            color: var(--accent-gold);
+            margin-bottom: 3.5rem;
+            text-align: center;
+            font-size: 3.2rem;
+            position: relative;
+            display: block;
+            width: 100%;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90px;
+            height: 3px;
+            background: var(--fire-gradient);
+            border-radius: 2px;
+            transition: width 0.4s ease;
+        }
+
+        .section-title:hover::after {
+            width: 150px;
+        }
+
+        .section-title i {
+            margin-right: 12px;
+            color: var(--accent-fire);
+            transition: transform 0.5s ease;
+        }
+
+        .section-title:hover i {
+            transform: rotate(20deg) scale(1.2);
+        }
+
+        /* SCROLL REVEAL ANIMATIONS */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
+                        transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .reveal.reveal-left {
+            transform: translateX(-60px);
+        }
+
+        .reveal.reveal-right {
+            transform: translateX(60px);
+        }
+
+        .reveal.reveal-scale {
+            transform: scale(0.85);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0) translateX(0) scale(1);
+        }
+
+        /* ABOUT SECTION */
+        .about {
+            background: linear-gradient(180deg, #0f0c0a 0%, #171310 100%);
+        }
+
+        .about-text {
+            max-width: 850px;
+            margin: 0 auto;
+            line-height: 1.9;
+            font-size: 1.2rem;
+            text-align: center;
+            color: #d8ceb8;
+            font-weight: 300;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(244, 162, 97, 0.12);
+            border-radius: 18px;
+            padding: 2.8rem 1.8rem;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            transform-style: preserve-3d;
+            perspective: 1000px;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--fire-gradient);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-12px) scale(1.02);
+            border-color: rgba(231, 111, 81, 0.5);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
+        }
+
+        .feature-card:hover::before {
+            opacity: 1;
+        }
+
+        .feature-icon-wrapper {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            background: rgba(231, 111, 81, 0.12);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.4s ease;
+        }
+
+        .feature-card:hover .feature-icon-wrapper {
+            background: var(--fire-gradient);
+            transform: scale(1.1) rotate(10deg);
+            box-shadow: var(--warm-glow);
+        }
+
+        .feature-card i {
+            font-size: 2.3rem;
+            color: var(--accent-gold);
+            transition: color 0.4s ease;
+        }
+
+        .feature-card:hover i {
+            color: #ffffff;
+        }
+
+        .feature-card h3 {
+            font-size: 1.4rem;
+            font-family: 'Playfair Display', serif;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+            color: #ffffff;
+        }
+
+        /* MENU PIZZE SECTION */
+        .menu-pizze {
+            background: linear-gradient(180deg, #171310 0%, #0f0c0a 100%);
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.2rem;
+        }
+
+        .pizza-card {
+            background: var(--card-bg);
+            padding: 2.8rem 2rem;
+            border-radius: 20px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .pizza-card.featured {
+            border-color: rgba(231, 111, 81, 0.6);
+            box-shadow: 0 10px 30px rgba(214, 40, 40, 0.2);
+        }
+
+        .featured-badge {
+            position: absolute;
+            top: 20px;
+            right: -35px;
+            background: var(--fire-gradient);
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 0.75rem;
+            padding: 4px 35px;
+            transform: rotate(45deg);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .pizza-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.8);
+            border-color: var(--accent-gold);
+        }
+
+        .pizza-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 0.8rem;
+        }
+
+        .pizza-card h3 {
+            font-size: 1.7rem;
+            color: white;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .prezzo {
+            font-size: 2.2rem;
+            background: var(--gold-gradient);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+            font-family: 'Playfair Display', serif;
+            animation: shimmerGradient 5s ease infinite;
+        }
+
+        .pizza-card p {
+            color: var(--text-muted);
+            font-size: 1rem;
+            line-height: 1.6;
+            font-weight: 300;
+            margin-bottom: 1.5rem;
+        }
+
+        .pizza-tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            font-size: 0.75rem;
+            padding: 4px 10px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.06);
+            color: var(--accent-gold);
+            border: 1px solid rgba(244, 162, 97, 0.3);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* ORARI SECTION */
+        .orari {
+            background: linear-gradient(180deg, #0f0c0a 0%, #181310 100%);
+        }
+
+        .orari-list {
+            list-style: none;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .orari-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.3rem 1.8rem;
+            background: rgba(255, 255, 255, 0.03);
+            margin-bottom: 1rem;
+            border-radius: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .orari-item:hover {
+            background: rgba(231, 111, 81, 0.08);
+            transform: translateX(10px);
+            border-color: rgba(244, 162, 97, 0.4);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .orari-item span:first-child {
+            font-weight: 600;
+            letter-spacing: 1px;
+            font-size: 1.1rem;
+        }
+
+        .orari-item span:last-child {
+            color: var(--accent-bright);
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .orari-item.closed span:last-child {
+            color: #ff5555;
+        }
+
+        .orari-note {
+            background: rgba(231, 111, 81, 0.08);
+            border: 1px solid rgba(244, 162, 97, 0.3);
+            border-radius: 14px;
+            padding: 1.5rem;
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+        .orari-note h4 {
+            color: var(--accent-gold);
+            font-size: 1.15rem;
+            margin-bottom: 0.5rem;
+            letter-spacing: 1px;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .orari-note p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            font-weight: 300;
+            line-height: 1.5;
+        }
+
+        .prenota {
+            background: linear-gradient(180deg, #181310 0%, #0f0c0a 100%);
+        }
+
+        .form-prenotazione {
+            max-width: 650px;
+            margin: 0 auto;
+            background: rgba(22, 18, 15, 0.88);
+            border: 1px solid rgba(244, 162, 97, 0.3);
+            padding: 3.2rem 2.5rem;
+            border-radius: 24px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(12px);
+            position: relative;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.6rem;
+            color: var(--accent-gold);
+            font-weight: 600;
+            letter-spacing: 1px;
+            font-size: 1rem;
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 1rem 1.2rem;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            color: #ffffff;
+            font-family: inherit;
+            font-size: 1.05rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group select option {
+            background-color: #171310;
+            color: #ffffff;
+            padding: 0.8rem;
+        }
+
+        /* CUSTOM SELECT */
+        .luxury-select {
+            position: relative;
+            width: 100%;
+            color: white;
+            user-select: none;
+        }
+
+        .luxury-selected {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1rem 1.2rem;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            letter-spacing: 1px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1.05rem;
+        }
+
+        .luxury-selected::after {
+            content: '\f107';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            color: var(--accent-gold);
+            transition: transform 0.3s ease;
+        }
+
+        .luxury-select.open .luxury-selected::after {
+            transform: rotate(180deg);
+        }
+
+        .luxury-select.error .luxury-selected {
+            border-color: #ff4d4d;
+            box-shadow: 0 0 10px rgba(255, 77, 77, 0.4);
+        }
+
+        .luxury-selected:hover {
+            border-color: var(--accent-gold);
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 15px rgba(244, 162, 97, 0.3);
+        }
+
+        .luxury-options {
+            position: absolute;
+            top: calc(100% + 8px);
+            left: 0;
+            width: 100%;
+            background: rgba(18, 14, 12, 0.98);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(244, 162, 97, 0.4);
+            border-radius: 14px;
+            padding: 0.6rem 0;
+            display: none;
+            flex-direction: column;
+            z-index: 999;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.9);
+        }
+
+        .luxury-option {
+            padding: 1rem 1.4rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 1.05rem;
+        }
+
+        .luxury-option:hover {
+            background: rgba(231, 111, 81, 0.2);
+            color: var(--accent-bright);
+            padding-left: 1.8rem;
+        }
+
+        .luxury-select.open .luxury-options {
+            display: flex;
+            animation: zoomIn 0.25s ease-out;
+        }
+
+        /* BUTTON SUBMIT */
+        .btn-submit {
+            background: var(--fire-gradient);
+            background-size: 200% 200%;
+            color: #ffffff;
+            padding: 1.2rem 2.5rem;
+            border: 2px solid transparent;
+            border-radius: 50px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1.25rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            transition: all 0.35s ease;
+            box-shadow: 0 8px 25px rgba(214, 40, 40, 0.45);
+            text-transform: uppercase;
+            margin-top: 1rem;
+            animation: shimmerGradient 4s ease infinite;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(244, 162, 97, 0.7);
+            border-color: #ffffff;
+        }
+
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.88);
+            backdrop-filter: blur(12px);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .modal-card {
+            background: var(--card-bg);
+            border: 1px solid var(--accent-gold);
+            border-radius: 24px;
+            padding: 3rem 2.5rem;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.9);
+            transform: scale(0.8) translateY(20px);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .modal-overlay.active .modal-card {
+            transform: scale(1) translateY(0);
+        }
+
+        .modal-icon {
+            width: 85px;
+            height: 85px;
+            margin: 0 auto 1.5rem;
+            background: var(--fire-gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.8rem;
+            color: #ffffff;
+            box-shadow: var(--warm-glow);
+        }
+
+        .modal-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            color: var(--accent-gold);
+            margin-bottom: 0.8rem;
+        }
+
+        .modal-card p {
+            color: #e0d8d0;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .btn-modal-close {
+            background: var(--fire-gradient);
+            color: #ffffff;
+            padding: 0.85rem 2.8rem;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            letter-spacing: 1px;
+            transition: transform 0.3s ease;
+        }
+
+        .btn-modal-close:hover {
+            transform: scale(1.05);
+        }
+
+        /* CONTATTI */
+        .contatti {
+            background: linear-gradient(180deg, #0f0c0a 0%, #171310 100%);
+        }
+
+        .contatti-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .contatti-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.06);
+            padding: 2.2rem;
+            border-radius: 18px;
+            transition: all 0.3s ease;
+        }
+
+        .contatti-card:hover {
+            background: rgba(231, 111, 81, 0.08);
+            border-color: rgba(244, 162, 97, 0.4);
+            transform: translateY(-5px);
+        }
+
+        .contatti-card i {
+            font-size: 2.5rem;
+            color: var(--accent-fire);
+            margin-bottom: 1rem;
+        }
+
+        .contatti-card a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: color 0.3s ease;
+            display: block;
+        }
+
+        .contatti-card a:hover {
+            color: var(--accent-bright);
+        }
+
+        .map-container {
+            border-radius: 22px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.7);
+            border: 1px solid rgba(244, 162, 97, 0.2);
+        }
+
+        /* FOOTER */
+        .footer {
+            background: #080605;
+            text-align: center;
+            padding: 3.5rem 1rem;
+            border-top: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .social {
+            display: flex;
+            justify-content: center;
+            gap: 1.8rem;
+            margin-top: 1.8rem;
+        }
+
+        .social a {
+            color: white;
+            font-size: 1.8rem;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .social a:hover {
+            color: #ffffff;
+            background: var(--fire-gradient);
+            transform: translateY(-6px) scale(1.1);
+            box-shadow: var(--warm-glow);
+        }
+
+        .menu-mobile {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--accent-gold);
+            font-size: 2rem;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .menu-mobile:hover {
+            transform: scale(1.1);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .menu-mobile {
+                display: block;
+            }
+
+            .nav {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(10, 8, 7, 0.98);
+                backdrop-filter: blur(15px);
+                border-bottom: 1px solid rgba(244, 162, 97, 0.3);
+            }
+
+            .nav.active {
+                display: block;
+                animation: fadeInDown 0.4s ease-out;
+            }
+
+            .nav ul {
+                flex-direction: column;
+                padding: 2rem;
+                gap: 1.5rem;
+            }
+
+            .hero h2 {
+                font-size: 3rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+
+            .hero-stats {
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            .section-title {
+                font-size: 2.3rem;
+            }
+
+            .form-prenotazione {
+                padding: 2rem 1.4rem;
+            }
+        }
+
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0f0c0a;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--accent-fire);
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--accent-gold);
+        }
+    </style>
+</head>
+<body>
+    <div class="pizza-stripe-accent"></div>
+
+    <header class="header" id="navbar">
+        <div class="logo">
+            <h1><i class="fas fa-pizza-slice"></i> LA <span>TRADIZIONE</span></h1>
+        </div>
+        <nav class="nav" aria-label="Navigazione principale">
+            <ul>
+                <li><a href="#about">Chi Siamo</a></li>
+                <li><a href="#menu">Pizze</a></li>
+                <li><a href="#orari">Orari</a></li>
+                <li><a href="#contatti">Contatti</a></li>
+                <li><a href="#prenota" class="btn-prenota btn-ripple">Prenota Tavolo</a></li>
+            </ul>
+        </nav>
+        <button class="menu-mobile" aria-label="Menu mobile">
+            <i class="fas fa-bars"></i>
+        </button>
+    </header>
+
+    <main>
+        <section class="hero">
+            <i class="fas fa-fire hero-floating-icon icon-1"></i>
+            <i class="fas fa-utensils hero-floating-icon icon-2"></i>
+
+            <div class="hero-content">
+                <span class="hero-badge"><i class="fas fa-fire-flame-curved"></i> Forno a Legna & Lievitazione 48H</span>
+                <h2>L'Autentica Pizza Artigianale</h2>
+                <p>Passione, ingredienti DOP e tradizione napoletana nel cuore di Selvino</p>
+                <div class="btn-ripple">
+                    <a href="#prenota" class="btn-hero">Prenota un Tavolo</a>
+                </div>
+                
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number" data-target="150">0</span>
+                        <span class="stat-label">Pizze Sfornate al Giorno</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number" data-target="48">0</span>
+                        <span class="stat-label">Ore di Lievitazione</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number" data-target="100">0</span>
+                        <span class="stat-label">% Ingredienti Italiani DOP</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-scroll" id="scrollBtn">
+                <i class="fas fa-chevron-down"></i>
+            </div>
+        </section>
+
+        <section id="about" class="section about">
+            <div class="container">
+                <h2 class="section-title reveal"><i class="fas fa-wheat-awt"></i> La Nostra Storia</h2>
+                <p class="about-text reveal">
+                    Nata a Selvino con la passione per la vera arte della pizza, <strong>La Tradizione</strong> unisce la secolare tecnica napoletana alla cura per i prodotti del territorio. Il nostro impasto lievita lentamente per almeno 48 ore, garantendo un cornicione alveolato, digeribilità impeccabile e la fragranza inconfondibile della cottura nel nostro forno a legna rotante.
+                </p>
+                <div class="features">
+                    <div class="feature-card reveal reveal-scale" data-tilt>
+                        <div class="feature-icon-wrapper">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <h3>Lievitazione 48H</h3>
+                        <p style="color: #a0958d; font-size: 0.95rem; font-weight: 300; margin-top: 0.5rem;">Impasto altamente digeribile a maturazione lenta con farine non raffinate.</p>
+                    </div>
+                    <div class="feature-card reveal reveal-scale" data-tilt>
+                        <div class="feature-icon-wrapper">
+                            <i class="fas fa-fire"></i>
+                        </div>
+                        <h3>Forno a Legna</h3>
+                        <p style="color: #a0958d; font-size: 0.95rem; font-weight: 300; margin-top: 0.5rem;">Cottura ad alta temperatura con legna di faggio per un profumo unico.</p>
+                    </div>
+                    <div class="feature-card reveal reveal-scale" data-tilt>
+                        <div class="feature-icon-wrapper">
+                            <i class="fas fa-award"></i>
+                        </div>
+                        <h3>Ingredienti DOP</h3>
+                        <p style="color: #a0958d; font-size: 0.95rem; font-weight: 300; margin-top: 0.5rem;">Pomodoro San Marzano, mozzarella di bufala e olio extravergine italiano.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="menu" class="section menu-pizze">
+            <div class="container">
+                <h2 class="section-title reveal"><i class="fas fa-pizza-slice"></i> Le Nostre Pizze</h2>
+                <div class="menu-grid">
+                    <div class="pizza-card reveal reveal-left" data-tilt>
+                        <div>
+                            <div class="pizza-header">
+                                <h3>Margherita DOP</h3>
+                                <span class="prezzo">€9.00</span>
+                            </div>
+                            <p>Pomodoro San Marzano DOP, Mozzarella di Bufala Campana DOP, Basilico fresco e Olio EVO a crudo.</p>
+                        </div>
+                        <div class="pizza-tags">
+                            <span class="tag">Classica</span>
+                            <span class="tag">Vegetariana</span>
+                        </div>
+                    </div>
+
+                    <div class="pizza-card featured reveal reveal-scale" data-tilt>
+                        <div class="featured-badge">Specialità</div>
+                        <div>
+                            <div class="pizza-header">
+                                <h3>La Selvina</h3>
+                                <span class="prezzo">€13.50</span>
+                            </div>
+                            <p>Fior di latte, Porcini delle Orobie, Salsiccia nostrana di Selvino e Fonduta di Taleggio DOP.</p>
+                        </div>
+                        <div class="pizza-tags">
+                            <span class="tag">Consigliata</span>
+                            <span class="tag">Gourmet</span>
+                        </div>
+                    </div>
+
+                    <div class="pizza-card reveal reveal-right" data-tilt>
+                        <div>
+                            <div class="pizza-header">
+                                <h3>Diavola Saporita</h3>
+                                <span class="prezzo">€10.50</span>
+                            </div>
+                            <p>Pomodoro San Marzano, Fior di Latte, Salame piccante di Calabria, 'Nduja e Origano di montagna.</p>
+                        </div>
+                        <div class="pizza-tags">
+                            <span class="tag">Piccante</span>
+                        </div>
+                    </div>
+
+                    <div class="pizza-card reveal reveal-left" data-tilt>
+                        <div>
+                            <div class="pizza-header">
+                                <h3>Pistacchiosa & Mortadella</h3>
+                                <span class="prezzo">€14.00</span>
+                            </div>
+                            <p>Fior di latte, Mortadella Bologna IGP, Pesto di Pistacchio di Bronte, Burrata pugliese intera e granella.</p>
+                        </div>
+                        <div class="pizza-tags">
+                            <span class="tag">Gourmet</span>
+                            <span class="tag">Top Seller</span>
+                        </div>
+                    </div>
+
+                    <div class="pizza-card reveal reveal-scale" data-tilt>
+                        <div>
+                            <div class="pizza-header">
+                                <h3>Tartufata Cream</h3>
+                                <span class="prezzo">€13.00</span>
+                            </div>
+                            <p>Crema di Tartufo nero, Fior di Latte, Funghi Chiodini trifolati e Scaglie di Parmigiano Reggiano 24 Mesi.</p>
+                        </div>
+                        <div class="pizza-tags">
+                            <span class="tag">Vegetariana</span>
+                            <span class="tag">Aromatica</span>
+                        </div>
+                    </div>
+
+                    <div class="pizza-card reveal reveal-right" data-tilt>
+                        <div>
+                            <div class="pizza-header">
+                                <h3>Ortolana dell'Orto</h3>
+                                <span class="prezzo">€11.00</span>
+                            </div>
+                            <p>Pomodoro, Fior di Latte, Zucchine e Melanzane grigliate, Peperoni al forno e Pomodorini Confit.</p>
+                        </div>
+                        <div class="pizza-tags">
+                            <span class="tag">Vegetariana</span>
+                            <span class="tag">Leggera</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="orari" class="section orari">
+            <div class="container">
+                <h2 class="section-title reveal"><i class="fas fa-clock"></i> Orari di Apertura</h2>
+                <div class="orari-list reveal">
+                    <div class="orari-item closed">
+                        <span>Lunedì</span>
+                        <span>CHIUSO</span>
+                    </div>
+                    <div class="orari-item">
+                        <span>Martedì - Giovedì</span>
+                        <span>18:30 - 22:30</span>
+                    </div>
+                    <div class="orari-item">
+                        <span>Venerdì</span>
+                        <span>18:30 - 23:00</span>
+                    </div>
+                    <div class="orari-item">
+                        <span>Sabato</span>
+                        <span>12:00 - 14:30 | 18:30 - 23:30</span>
+                    </div>
+                    <div class="orari-item">
+                        <span>Domenica</span>
+                        <span>12:00 - 15:00 | 18:30 - 22:30</span>
+                    </div>
+
+                    <div class="orari-note">
+                        <h4><i class="fas fa-fire-flame-curved"></i> Asporto e Consegna a Domicilio</h4>
+                        <p>Servizio d'asporto e consegna a domicilio attivo tutte le sere negli orari di apertura. Si consiglia la prenotazione anticipata nei weekend.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="prenota" class="section prenota">
+            <div class="container">
+                <h2 class="section-title reveal"><i class="fas fa-utensils"></i> Prenota un Tavolo o Asporto</h2>
+                
+                <form class="form-prenotazione reveal reveal-scale" id="bookingForm">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="nome">Nome e Cognome</label>
+                            <input type="text" id="nome" name="nome" placeholder="Es. Mario Rossi" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="telefono">Numero di Telefono</label>
+                            <input type="tel" id="telefono" name="telefono" placeholder="Es. 333 1234567" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="data">Data</label>
+                            <input type="date" id="data" name="data" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="ora">Orario</label>
+                            <input type="time" id="ora" name="ora" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label>Tipologia di Servizio</label>
+                        <div class="luxury-select" id="servizioSelect">
+                            <div class="luxury-selected">Seleziona Servizio</div>
+                            <div class="luxury-options">
+                                <div class="luxury-option" data-value="Tavolo in Sala Ristorante">Tavolo in Sala Ristorante</div>
+                                <div class="luxury-option" data-value="Ritiro Asporto in Pizzeria">Ritiro Asporto in Pizzeria</div>
+                                <div class="luxury-option" data-value="Consegna a Domicilio">Consegna a Domicilio</div>
+                            </div>
+                        </div>
+                        <input type="hidden" id="servizio" name="servizio" required>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label>Numero di Ospiti / Pizze</label>
+                        <div class="luxury-select" id="ospitiSelect">
+                            <div class="luxury-selected">2 Persone / 2 Pizze</div>
+                            <div class="luxury-options">
+                                <div class="luxury-option" data-value="1 Persona / 1 Pizza">1 Persona / 1 Pizza</div>
+                                <div class="luxury-option" data-value="2 Persone / 2 Pizze">2 Persone / 2 Pizze</div>
+                                <div class="luxury-option" data-value="3-4 Persone">3-4 Persone</div>
+                                <div class="luxury-option" data-value="5-8 Persone (Tavolata)">5-8 Persone (Tavolata)</div>
+                                <div class="luxury-option" data-value="Gruppo numeroso (> 8)">Gruppo numeroso (> 8)</div>
+                            </div>
+                        </div>
+                        <input type="hidden" id="ospiti" name="ospiti" value="2 Persone / 2 Pizze" required>
+                    </div>
+
+                    <div class="btn-ripple" style="width: 100%;">
+                        <button type="submit" class="btn-submit">Conferma Prenotazione</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <section id="contatti" class="section contatti">
+            <div class="container">
+                <h2 class="section-title reveal"><i class="fas fa-map-marked-alt"></i> Dove Tovarci</h2>
+                <div class="contatti-grid">
+                    <div class="contatti-card reveal">
+                        <i class="fas fa-phone-alt"></i>
+                        <h3>Chiamaci</h3>
+                        <a href="tel:+390350310434">+39 035 031 0434</a>
+                    </div>
+                    <div class="contatti-card reveal">
+                        <i class="fab fa-whatsapp"></i>
+                        <h3>WhatsApp Direct</h3>
+                        <a href="https://wa.me/390350310434" target="_blank" rel="noopener">Invia un Messaggio</a>
+                    </div>
+                    <div class="contatti-card reveal">
+                        <i class="fas fa-location-dot"></i>
+                        <h3>Indirizzo</h3>
+                        <a href="#map">Corso Milano 45, Selvino (BG)</a>
+                    </div>
+                </div>
+                <div class="map-container reveal reveal-scale" id="map">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2786.1105951682397!2d9.7485!3d45.7821!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x478151f1f1f1f1f1%3A0x0!2sCorso+Milano+45%2C+Selvino+BG!5e0!3m2!1sit!2sit!4v1620000000000" width="100%" height="360" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div class="modal-overlay" id="bookingModal">
+        <div class="modal-card">
+            <div class="modal-icon">
+                <i class="fas fa-pizza-slice"></i>
+            </div>
+            <h3>Richiesta Ricevuta!</h3>
+            <p id="modalMessage">Grazie! La tua prenotazione è stata inoltrata al nostro staff.</p>
+            <button class="btn-modal-close" id="closeModal">Ottimo, Grazie!</button>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Pizzeria La Tradizione - Selvino (BG). Tutti i diritti riservati.</p>
+            <div class="social">
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                <a href="#" aria-label="TripAdvisor"><i class="fab fa-tripadvisor"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            /* Header Scroll Styling */
+            const navbar = document.getElementById('navbar');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
+
+            /* Mobile Menu Toggle */
+            const menuBtn = document.querySelector('.menu-mobile');
+            const nav = document.querySelector('.nav');
+            menuBtn.addEventListener('click', () => {
+                nav.classList.toggle('active');
+            });
+
+            /* Scroll Reveal Observer */
+            const revealElements = document.querySelectorAll('.reveal');
+            const revealObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    }
+                });
+            }, {
+                threshold: 0.12,
+                rootMargin: "0px 0px -50px 0px"
+            });
+
+            revealElements.forEach(el => revealObserver.observe(el));
+
+            /* Stat Counter Animation */
+            const counters = document.querySelectorAll('.stat-number');
+            let hasCounted = false;
+
+            const countUpObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && !hasCounted) {
+                        hasCounted = true;
+                        counters.forEach(counter => {
+                            const target = +counter.getAttribute('data-target');
+                            const duration = 2000;
+                            const stepTime = 20;
+                            const steps = duration / stepTime;
+                            const increment = target / steps;
+                            let current = 0;
+
+                            const timer = setInterval(() => {
+                                current += increment;
+                                if (current >= target) {
+                                    counter.innerText = target + (target === 100 ? '%' : '+');
+                                    clearInterval(timer);
+                                } else {
+                                    counter.innerText = Math.ceil(current) + (target === 100 ? '%' : '+');
+                                }
+                            }, stepTime);
+                        });
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            if (counters.length > 0) {
+                countUpObserver.observe(counters[0].parentElement.parentElement);
+            }
+
+            /* 3D Card Tilt Effect */
+            const tiltCards = document.querySelectorAll('[data-tilt]');
+            tiltCards.forEach(card => {
+                card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+                    
+                    const rotateX = ((y - centerY) / centerY) * -8;
+                    const rotateY = ((x - centerX) / centerX) * 8;
+                    
+                    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-10px)`;
+                });
+
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)';
+                });
+            });
+
+            /* Button Ripple Effect */
+            const rippleContainers = document.querySelectorAll('.btn-ripple');
+            rippleContainers.forEach(container => {
+                container.addEventListener('click', function(e) {
+                    const circle = document.createElement('span');
+                    const diameter = Math.max(this.clientWidth, this.clientHeight);
+                    const radius = diameter / 2;
+
+                    const rect = this.getBoundingClientRect();
+                    circle.style.width = circle.style.height = `${diameter}px`;
+                    circle.style.left = `${e.clientX - rect.left - radius}px`;
+                    circle.style.top = `${e.clientY - rect.top - radius}px`;
+                    circle.classList.add('ripple');
+
+                    const ripple = this.getElementsByClassName('ripple')[0];
+                    if (ripple) {
+                        ripple.remove();
+                    }
+
+                    this.appendChild(circle);
+                });
+            });
+
+            /* Custom Select Dropdowns logic */
+            const luxurySelects = document.querySelectorAll(".luxury-select");
+            luxurySelects.forEach(select => {
+                const selected = select.querySelector(".luxury-selected");
+                const optionItems = select.querySelectorAll(".luxury-option");
+                const hiddenInput = select.parentElement.querySelector("input[type='hidden']");
+
+                selected.addEventListener("click", (e) => {
+                    e.stopPropagation();
+                    luxurySelects.forEach(s => {
+                        if (s !== select) s.classList.remove("open");
+                    });
+                    select.classList.toggle("open");
+                });
+
+                optionItems.forEach(option => {
+                    option.addEventListener("click", () => {
+                        const value = option.getAttribute("data-value");
+                        selected.textContent = option.textContent;
+                        if (hiddenInput) {
+                            hiddenInput.value = value;
+                        }
+                        select.classList.remove("open");
+                        select.classList.remove("error");
+                    });
+                });
+            });
+
+            document.addEventListener("click", (e) => {
+                luxurySelects.forEach(select => {
+                    if (!select.contains(e.target)) {
+                        select.classList.remove("open");
+                    }
+                });
+            });
+
+            /* Booking Form Handler (Modal Popup) */
+            const bookingForm = document.getElementById('bookingForm');
+            const bookingModal = document.getElementById('bookingModal');
+            const modalMessage = document.getElementById('modalMessage');
+            const closeModal = document.getElementById('closeModal');
+
+            bookingForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                const servizioInput = document.getElementById("servizio");
+                const servizioSelect = document.getElementById("servizioSelect");
+
+                if (!servizioInput.value) {
+                    servizioSelect.classList.add("error");
+                    return;
+                }
+
+                const nome = document.getElementById('nome').value;
+                const data = document.getElementById('data').value;
+                const ora = document.getElementById('ora').value;
+                const ospiti = document.getElementById('ospiti').value;
+                const servizio = servizioInput.value;
+
+                modalMessage.innerHTML = `Grazie mille <strong>${nome}</strong>!<br>La tua prenotazione per <strong>"${servizio}"</strong> (${ospiti}) il <strong>${data}</strong> alle <strong>${ora}</strong> è stata registrata. Ti contatteremo a breve per confermare il tavolo!`;
+                
+                bookingModal.classList.add('active');
+
+                this.reset();
+                const servizioSelected = servizioSelect.querySelector(".luxury-selected");
+                const ospitiSelected = document.querySelector("#ospitiSelect .luxury-selected");
+                if (servizioSelected) servizioSelected.textContent = "Seleziona Servizio";
+                if (ospitiSelected) ospitiSelected.textContent = "2 Persone / 2 Pizze";
+                servizioInput.value = "";
+                document.getElementById('ospiti').value = "2 Persone / 2 Pizze";
+            });
+
+            closeModal.addEventListener('click', () => {
+                bookingModal.classList.remove('active');
+            });
+
+            bookingModal.addEventListener('click', (e) => {
+                if (e.target === bookingModal) {
+                    bookingModal.classList.remove('active');
+                }
+            });
+
+            /* Smooth Scroll Indicator */
+            const scrollBtn = document.getElementById('scrollBtn');
+            if (scrollBtn) {
+                scrollBtn.addEventListener('click', () => {
+                    document.querySelector('#about').scrollIntoView({ behavior: 'smooth' });
+                });
+            }
+        });
+    </script>
+</body>
+</html>
