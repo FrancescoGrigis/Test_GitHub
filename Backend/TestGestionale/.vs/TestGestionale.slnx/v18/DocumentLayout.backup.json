@@ -26,9 +26,9 @@
               "Title": "Form1.cs",
               "DocumentMoniker": "C:\\Users\\fragr\\Documents\\GitHub\\Test_GitHub\\Backend\\TestGestionale\\Form1.cs",
               "RelativeDocumentMoniker": "Form1.cs",
-              "ToolTip": "C:\\Users\\fragr\\Documents\\GitHub\\Test_GitHub\\Backend\\TestGestionale\\Form1.cs",
-              "RelativeToolTip": "Form1.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACIAAAAhAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\fragr\\Documents\\GitHub\\Test_GitHub\\Backend\\TestGestionale\\Form1.cs*",
+              "RelativeToolTip": "Form1.cs*",
+              "ViewState": "AgIAABoAAAAAAAAAAAAowD0AAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-10-08T14:02:03.114Z",
               "EditorCaption": ""
@@ -39,10 +39,11 @@
               "Title": "Form1.cs [Progettazione]",
               "DocumentMoniker": "C:\\Users\\fragr\\Documents\\GitHub\\Test_GitHub\\Backend\\TestGestionale\\Form1.cs",
               "RelativeDocumentMoniker": "Form1.cs",
-              "ToolTip": "C:\\Users\\fragr\\Documents\\GitHub\\Test_GitHub\\Backend\\TestGestionale\\Form1.cs [Progettazione]",
-              "RelativeToolTip": "Form1.cs [Progettazione]",
+              "ToolTip": "C:\\Users\\fragr\\Documents\\GitHub\\Test_GitHub\\Backend\\TestGestionale\\Form1.cs [Progettazione]*",
+              "RelativeToolTip": "Form1.cs [Progettazione]*",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-10-08T14:00:29.174Z"
+              "WhenOpened": "2026-10-08T14:00:29.174Z",
+              "EditorCaption": " [Progettazione]"
             }
           ]
         }
