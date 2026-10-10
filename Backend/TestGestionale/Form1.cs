@@ -18,9 +18,22 @@ namespace TestGestionale
             InitializeComponent();
         }
 
+        decimal prezzo = default;
         private string connectionString = @"Server=(localdb)\MSSQLLocalDB;Initial Catalog=DemoDB;Integrated Security=True;";
         private void button1_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(textBox1.Text) || string.IsNullOrWhiteSpace(textBox2.Text) || string.IsNullOrWhiteSpace(richTextBox1.Text))
+            {
+                MessageBox.Show("Errore, compilare tutti i campi.");
+                return;
+            }
+
+            if (!decimal.TryParse(textBox2.Text, out prezzo))
+            {
+                MessageBox.Show("Errore, inserire un valore valido per il prezzo.");
+                return;
+            }
+
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
@@ -30,28 +43,28 @@ namespace TestGestionale
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
                     cmd.Parameters.AddWithValue("@valore1", textBox1.Text);
-                    cmd.Parameters.AddWithValue("@valore2", textBox2.Text);
+                    cmd.Parameters.AddWithValue("@valore2", prezzo);
                     cmd.Parameters.AddWithValue("@valore3", richTextBox1.Text);
                     cmd.Parameters.AddWithValue("@valore4", checkBox1.Checked);
                     cmd.ExecuteNonQuery();
                 }
-
-                if (checkBox1.Checked)
-                {
-                    checkBox1.Text = "Attivo";
-                }
-                else
-                {
-                    checkBox1.Text = "Non Attivo";
-                }
-
-                textBox1.Clear();
-                textBox2.Clear();
-                richTextBox1.Clear();
-                checkBox1.Checked = false;
-
-                textBox1.Focus();
             }
+
+            if (checkBox1.Checked)
+            {
+                checkBox1.Text = "Attivo";
+            }
+            else
+            {
+                checkBox1.Text = "Non Attivo";
+            }
+
+            textBox1.Clear();
+            textBox2.Clear();
+            richTextBox1.Clear();
+            checkBox1.Checked = false;
+
+            textBox1.Focus();
             this.demoTBTableAdapter.Fill(this.demoDBDataSet.DemoTB);
         }
 
