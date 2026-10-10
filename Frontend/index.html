@@ -198,7 +198,15 @@
                         <span>CHIUSO</span>
                     </div>
                     <div class="orari-item">
-                        <span>Martedì - Giovedì</span>
+                        <span>Martedì</span>
+                        <span>18:30 - 22:30</span>
+                    </div>
+                    <div class="orari-item">
+                        <span>Mercoledì</span>
+                        <span>18:30 - 22:30</span>
+                    </div>
+                    <div class="orari-item">
+                        <span>Giovedì</span>
                         <span>18:30 - 22:30</span>
                     </div>
                     <div class="orari-item">
@@ -262,10 +270,10 @@
                     <div class="form-group full-width">
                         <label>Numero di Ospiti / Pizze</label>
                         <div class="luxury-select" id="ospitiSelect">
-                            <div class="luxury-selected">2 Persone / 2 Pizze</div>
+                            <div class="luxury-selected">2 Persone</div>
                             <div class="luxury-options">
-                                <div class="luxury-option" data-value="1 Persona / 1 Pizza">1 Persona / 1 Pizza</div>
-                                <div class="luxury-option" data-value="2 Persone / 2 Pizze">2 Persone / 2 Pizze</div>
+                                <div class="luxury-option" data-value="1 Persona / 1 Pizza">1 Persona</div>
+                                <div class="luxury-option" data-value="2 Persone / 2 Pizze">2 Persone</div>
                                 <div class="luxury-option" data-value="3-4 Persone">3-4 Persone</div>
                                 <div class="luxury-option" data-value="5-8 Persone (Tavolata)">5-8 Persone (Tavolata)</div>
                                 <div class="luxury-option" data-value="Gruppo numeroso (> 8)">Gruppo numeroso (> 8)</div>
@@ -302,8 +310,8 @@
                     </div>
                 </div>
                 <div class="map-container reveal reveal-scale" id="map">
-                    <iframe src="https://www.google.com/maps/place/Bar+Pizzeria+Tennis/@45.7837771,9.750047,17z/data=!3m1!4b1!4m6!3m5!1s0x478157fa980afe93:0x93e8c02444f7fffc!8m2!3d45.7837771!4d9.750047!16s%2Fg%2F1tffybzg?entry=ttu&g_ep=EgoyMDI2MTAwNS4wIKXMDSoASAFQAw%3D%3D" width="100%" height="360" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-                </div>
+                    <iframe src="https://maps.google.com/maps?q=Bar+Pizzeria+Tennis,+Selvino+(BG)&t=&z=16&ie=UTF8&iwloc=&output=embed" width="100%" height="360" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>            
             </div>
         </section>
     </main>
@@ -332,7 +340,7 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            /* Header Scroll Styling */
+            /* Header Scroll Effect */
             const navbar = document.getElementById('navbar');
             window.addEventListener('scroll', () => {
                 if (window.scrollY > 50) {
@@ -345,21 +353,23 @@
             /* Mobile Menu Toggle */
             const menuBtn = document.querySelector('.menu-mobile');
             const nav = document.querySelector('.nav');
-            menuBtn.addEventListener('click', () => {
-                nav.classList.toggle('active');
-            });
+            if (menuBtn && nav) {
+                menuBtn.addEventListener('click', () => {
+                    nav.classList.toggle('active');
+                });
+            }
 
             /* Scroll Reveal Observer */
             const revealElements = document.querySelectorAll('.reveal');
-            const revealObserver = new IntersectionObserver((entries, observer) => {
+            const revealObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('active');
                     }
                 });
             }, {
-                threshold: 0.12,
-                rootMargin: "0px 0px -50px 0px"
+                threshold: 0.1,
+                rootMargin: "0px 0px -40px 0px"
             });
 
             revealElements.forEach(el => revealObserver.observe(el));
@@ -394,25 +404,22 @@
                 });
             }, { threshold: 0.5 });
 
-            if (counters.length > 0) {
+            if (counters.length > 0 && counters[0].parentElement.parentElement) {
                 countUpObserver.observe(counters[0].parentElement.parentElement);
             }
 
-            /* 3D Card Tilt Effect */
+            /* 3D Tilt Effect */
             const tiltCards = document.querySelectorAll('[data-tilt]');
             tiltCards.forEach(card => {
                 card.addEventListener('mousemove', (e) => {
                     const rect = card.getBoundingClientRect();
                     const x = e.clientX - rect.left;
                     const y = e.clientY - rect.top;
-                    
                     const centerX = rect.width / 2;
                     const centerY = rect.height / 2;
-                    
-                    const rotateX = ((y - centerY) / centerY) * -8;
-                    const rotateY = ((x - centerX) / centerX) * 8;
-                    
-                    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-10px)`;
+                    const rotateX = ((y - centerY) / centerY) * -6;
+                    const rotateY = ((x - centerX) / centerX) * 6;
+                    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px)`;
                 });
 
                 card.addEventListener('mouseleave', () => {
@@ -424,26 +431,24 @@
             const rippleContainers = document.querySelectorAll('.btn-ripple');
             rippleContainers.forEach(container => {
                 container.addEventListener('click', function(e) {
+                    const existingRipple = this.querySelector('.ripple');
+                    if (existingRipple) existingRipple.remove();
+
                     const circle = document.createElement('span');
                     const diameter = Math.max(this.clientWidth, this.clientHeight);
                     const radius = diameter / 2;
-
                     const rect = this.getBoundingClientRect();
+
                     circle.style.width = circle.style.height = `${diameter}px`;
                     circle.style.left = `${e.clientX - rect.left - radius}px`;
                     circle.style.top = `${e.clientY - rect.top - radius}px`;
                     circle.classList.add('ripple');
 
-                    const ripple = this.getElementsByClassName('ripple')[0];
-                    if (ripple) {
-                        ripple.remove();
-                    }
-
                     this.appendChild(circle);
                 });
             });
 
-            /* Custom Select Dropdowns logic */
+            /* Custom Select Dropdowns */
             const luxurySelects = document.querySelectorAll(".luxury-select");
             luxurySelects.forEach(select => {
                 const selected = select.querySelector(".luxury-selected");
@@ -479,57 +484,133 @@
                 });
             });
 
-            /* Booking Form Handler (Modal Popup) */
+            /* Toast Notification System */
+            function showToast(message, type = 'success') {
+                let toastContainer = document.getElementById('toastContainer');
+                if (!toastContainer) {
+                    toastContainer = document.createElement('div');
+                    toastContainer.id = 'toastContainer';
+                    toastContainer.style.cssText = 'position:fixed; bottom:30px; right:30px; z-index:9999; display:flex; flex-direction:column; gap:10px;';
+                    document.body.appendChild(toastContainer);
+                }
+
+                const toast = document.createElement('div');
+                toast.style.cssText = `background:${type === 'success' ? '#2b9348' : '#d62828'}; color:#fff; padding:1rem 1.5rem; border-radius:12px; box-shadow:0 10px 30px rgba(0,0,0,0.5); font-weight:600; font-size:0.95rem; display:flex; align-items:center; gap:10px; animation:fadeInUp 0.3s ease-out;`;
+                toast.innerHTML = `<i class="fas ${type === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle'}"></i> <span>${message}</span>`;
+                
+                toastContainer.appendChild(toast);
+
+                setTimeout(() => {
+                    toast.style.opacity = '0';
+                    toast.style.transform = 'translateY(20px)';
+                    toast.style.transition = 'all 0.3s ease';
+                    setTimeout(() => toast.remove(), 300);
+                }, 4000);
+            }
+
+            /* Booking Form Handling with .NET Backend sync & localStorage fallback */
             const bookingForm = document.getElementById('bookingForm');
             const bookingModal = document.getElementById('bookingModal');
             const modalMessage = document.getElementById('modalMessage');
             const closeModal = document.getElementById('closeModal');
 
-            bookingForm.addEventListener('submit', function(e) {
-                e.preventDefault();
+            if (bookingForm) {
+                bookingForm.addEventListener('submit', async function(e) {
+                    e.preventDefault();
 
-                const servizioInput = document.getElementById("servizio");
-                const servizioSelect = document.getElementById("servizioSelect");
+                    const servizioInput = document.getElementById("servizio");
+                    const servizioSelect = document.getElementById("servizioSelect");
 
-                if (!servizioInput.value) {
-                    servizioSelect.classList.add("error");
-                    return;
-                }
+                    if (!servizioInput.value) {
+                        if (servizioSelect) servizioSelect.classList.add("error");
+                        showToast("Seleziona una tipologia di servizio valida.", "error");
+                        return;
+                    }
 
-                const nome = document.getElementById('nome').value;
-                const data = document.getElementById('data').value;
-                const ora = document.getElementById('ora').value;
-                const ospiti = document.getElementById('ospiti').value;
-                const servizio = servizioInput.value;
+                    const formData = {
+                        nome: document.getElementById('nome').value,
+                        telefono: document.getElementById('telefono').value,
+                        data: document.getElementById('data').value,
+                        ora: document.getElementById('ora').value,
+                        servizio: servizioInput.value,
+                        ospiti: document.getElementById('ospiti').value,
+                        timestamp: new Date().toISOString()
+                    };
 
-                modalMessage.innerHTML = `Grazie mille <strong>${nome}</strong>!<br>La tua prenotazione per <strong>"${servizio}"</strong> (${ospiti}) il <strong>${data}</strong> alle <strong>${ora}</strong> è stata registrata. Ti contatteremo a breve per confermare il tavolo!`;
-                
-                bookingModal.classList.add('active');
+                    let backendSynced = false;
 
-                this.reset();
-                const servizioSelected = servizioSelect.querySelector(".luxury-selected");
-                const ospitiSelected = document.querySelector("#ospitiSelect .luxury-selected");
-                if (servizioSelected) servizioSelected.textContent = "Seleziona Servizio";
-                if (ospitiSelected) ospitiSelected.textContent = "2 Persone / 2 Pizze";
-                servizioInput.value = "";
-                document.getElementById('ospiti').value = "2 Persone / 2 Pizze";
-            });
+                    try {
+                        const controllerSignal = new AbortController();
+                        const timeoutId = setTimeout(() => controllerSignal.abort(), 4000);
 
-            closeModal.addEventListener('click', () => {
-                bookingModal.classList.remove('active');
-            });
+                        // Chiamata POST verso l'API .NET
+                        const response = await fetch('https://localhost??', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify(formData),
+                            signal: controllerSignal.signal
+                        });
 
-            bookingModal.addEventListener('click', (e) => {
-                if (e.target === bookingModal) {
+                        clearTimeout(timeoutId);
+
+                        if (response.ok) {
+                            backendSynced = true;
+                            console.log('Sincronizzato con successo con il backend .NET');
+                        }
+                    } catch (error) {
+                        console.warn('Backend .NET non raggiungibile, salvataggio di sicurezza in locale (localStorage)...', error);
+                    }
+
+                    // Salvtaggio di sicurezza in localStorage
+                    try {
+                        const existingBookings = JSON.parse(localStorage.getItem('pizzeria_prenotazioni') || '[]');
+                        existingBookings.push(formData);
+                        localStorage.setItem('pizzeria_prenotazioni', JSON.stringify(existingBookings));
+                    } catch (err) {
+                        console.error('Errore salvataggio locale:', err);
+                    }
+
+                    if (modalMessage) {
+                        modalMessage.innerHTML = `Grazie mille <strong>${formData.nome}</strong>!<br>La tua prenotazione per <strong>"${formData.servizio}"</strong> (${formData.ospiti}) il <strong>${formData.data}</strong> alle <strong>${formData.ora}</strong> è stata registrata${backendSynced ? ' e confermata sul server .NET' : ' (salvata in locale)'}. Ti contatteremo al <strong>${formData.telefono}</strong>!`;
+                    }
+
+                    if (bookingModal) {
+                        bookingModal.classList.add('active');
+                    }
+
+                    showToast("Prenotazione registrata con successo!");
+                    this.reset();
+
+                    const servizioSelected = servizioSelect ? servizioSelect.querySelector(".luxury-selected") : null;
+                    const ospitiSelected = document.querySelector("#ospitiSelect .luxury-selected");
+                    if (servizioSelected) servizioSelected.textContent = "Seleziona Servizio";
+                    if (ospitiSelected) ospitiSelected.textContent = "2 Persone / 2 Pizze";
+                    if (servizioInput) servizioInput.value = "";
+                    const ospitiInput = document.getElementById('ospiti');
+                    if (ospitiInput) ospitiInput.value = "2 Persone / 2 Pizze";
+                });
+            }
+
+            if (closeModal && bookingModal) {
+                closeModal.addEventListener('click', () => {
                     bookingModal.classList.remove('active');
-                }
-            });
+                });
+
+                bookingModal.addEventListener('click', (e) => {
+                    if (e.target === bookingModal) {
+                        bookingModal.classList.remove('active');
+                    }
+                });
+            }
 
             /* Smooth Scroll Indicator */
             const scrollBtn = document.getElementById('scrollBtn');
             if (scrollBtn) {
                 scrollBtn.addEventListener('click', () => {
-                    document.querySelector('#about').scrollIntoView({ behavior: 'smooth' });
+                    const aboutSection = document.querySelector('#about');
+                    if (aboutSection) aboutSection.scrollIntoView({ behavior: 'smooth' });
                 });
             }
         });
