@@ -1,32 +1,110 @@
 using Microsoft.Data.SqlClient;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// CORS
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(policy =>
+    {
+        policy.AllowAnyOrigin()
+              .AllowAnyMethod()
+              .AllowAnyHeader();
+    });
+});
+
 var app = builder.Build();
 
-string connectionString = "Server=IL_TUO_SERVER;Database=GestionePizzeria;Trusted_Connection=True;TrustServerCertificate=True;";
+app.UseCors();
 
-app.MapPost("/api/ordini", async (OrdineDto dati) =>
+// Connection string
+string connectionString =
+    @"Server=(localdb)\MSSQLLocalDB;Database=DemoDB;Trusted_Connection=True;TrustServerCertificate=True;";
+
+// POST prenotazione
+app.MapPost("/api/prenotazioni", async (PrenotazioneDto dati) =>
 {
-    if (dati == null) return Results.BadRequest("Dati vuoti");
+    if (dati == null)
+        return Results.BadRequest("Dati mancanti.");
 
-    using (SqlConnection conn = new SqlConnection(connectionString))
+    if (string.IsNullOrWhiteSpace(dati.Nome))
+        return Results.BadRequest("Nome obbligatorio.");
+
+    if (string.IsNullOrWhiteSpace(dati.Telefono))
+        return Results.BadRequest("Telefono obbligatorio.");
+
+    try
     {
-        string query = "INSERT INTO Ordini (NomeCliente, DettagliOrdine) VALUES (@Nome, @Dettagli)";
+        using SqlConnection conn = new SqlConnection(connectionString);
 
-        using (SqlCommand cmd = new SqlCommand(query, conn))
+        await conn.OpenAsync();
+
+        string query = @"
+            INSERT INTO Prenotazioni
+            (
+                Nome,
+                Telefono,
+                Data,
+                Ora,
+                Servizio,
+                Ospiti,
+                Timestamp
+            )
+            VALUES
+            (
+                @Nome,
+                @Telefono,
+                @Data,
+                @Ora,
+                @Servizio,
+                @Ospiti,
+                @Timestamp
+            )";
+
+        using SqlCommand cmd = new SqlCommand(query, conn);
+
+        cmd.Parameters.AddWithValue("@Nome", dati.Nome);
+        cmd.Parameters.AddWithValue("@Telefono", dati.Telefono);
+        cmd.Parameters.AddWithValue("@Data", dati.Data);
+        cmd.Parameters.AddWithValue("@Ora", dati.Ora);
+        cmd.Parameters.AddWithValue("@Servizio", dati.Servizio);
+
+        if (int.TryParse(dati.Ospiti, out int ospiti))
+            cmd.Parameters.AddWithValue("@Ospiti", ospiti);
+        else
+            cmd.Parameters.AddWithValue("@Ospiti", 0);
+
+        if (DateTime.TryParse(dati.Timestamp, out DateTime timestamp))
+            cmd.Parameters.AddWithValue("@Timestamp", timestamp);
+        else
+            cmd.Parameters.AddWithValue("@Timestamp", DateTime.Now);
+
+        await cmd.ExecuteNonQueryAsync();
+
+        return Results.Ok(new
         {
-            cmd.Parameters.AddWithValue("@Nome", dati.NomeCliente);
-            cmd.Parameters.AddWithValue("@Dettagli", dati.DettagliOrdine);
-
-            conn.Open();
-
-            cmd.ExecuteNonQuery();
-        }
+            Messaggio = "Prenotazione salvata con successo"
+        });
     }
+    catch (Exception ex)
+    {
+        Console.WriteLine(ex);
 
-    return Results.Ok(new { status = "Salvato!" });
+        return Results.BadRequest(new
+        {
+            Errore = ex.Message
+        });
+    }
 });
 
 app.Run();
 
-public record OrdineDto(string NomeCliente, string DettagliOrdine);
+public record PrenotazioneDto(
+    string Nome,
+    string Telefono,
+    string Data,
+    string Ora,
+    string Servizio,
+    string Ospiti,
+    string Timestamp
+);

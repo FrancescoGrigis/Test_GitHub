@@ -198,29 +198,33 @@ document.addEventListener("DOMContentLoaded", () => {
 
                     let backendSynced = false;
 
-                    try {
-                        const controllerSignal = new AbortController();
-                        const timeoutId = setTimeout(() => controllerSignal.abort(), 4000);
+                        try {
 
-                        // Chiamata POST verso l'API .NET
-                        const response = await fetch('https://localhost:5001/api/prenotazioni', {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json'
-                            },
-                            body: JSON.stringify(formData),
-                            signal: controllerSignal.signal
-                        });
+                            const response = await fetch('http://localhost:5178/api/prenotazioni', {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json'
+                                },
+                                body: JSON.stringify(formData)
+                            });
 
-                        clearTimeout(timeoutId);
+                            if (response.ok) {
+                                backendSynced = true;
+                                console.log('Sincronizzato con successo con il backend .NET');
+                            }
+                            else {
+                                console.error('Errore API:', response.status);
+                            }
 
-                        if (response.ok) {
-                            backendSynced = true;
-                            console.log('Sincronizzato con successo con il backend .NET');
                         }
-                    } catch (error) {
-                        console.warn('Backend .NET non raggiungibile, salvataggio di sicurezza in locale (localStorage)...', error);
-                    }
+                        catch (error) {
+
+                            console.warn(
+                                'Backend .NET non raggiungibile, salvataggio di sicurezza in locale (localStorage)...',
+                                error
+                            );
+
+                        }
 
                     // Salvtaggio di sicurezza in localStorage
                     try {
