@@ -49,7 +49,6 @@
             this.prezzoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descrizioneDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.isActiveDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -68,6 +67,8 @@
             this.prenotazioniBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.demoDBDataSet1 = new TestGestionale.DemoDBDataSet1();
             this.prenotazioniTableAdapter = new TestGestionale.DemoDBDataSet1TableAdapters.PrenotazioniTableAdapter();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.demoDBDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.demoTBBindingSource)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -106,6 +107,8 @@
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.White;
+            this.tabPage1.Controls.Add(this.label5);
+            this.tabPage1.Controls.Add(this.label4);
             this.tabPage1.Controls.Add(this.button3);
             this.tabPage1.Controls.Add(this.txbID);
             this.tabPage1.Controls.Add(this.button2);
@@ -113,7 +116,6 @@
             this.tabPage1.Controls.Add(this.txbIngredienti);
             this.tabPage1.Controls.Add(this.checkBox1);
             this.tabPage1.Controls.Add(this.dataGridView1);
-            this.tabPage1.Controls.Add(this.label4);
             this.tabPage1.Controls.Add(this.label3);
             this.tabPage1.Controls.Add(this.label2);
             this.tabPage1.Controls.Add(this.label1);
@@ -128,7 +130,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(14, 361);
+            this.button3.Location = new System.Drawing.Point(14, 414);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(204, 34);
             this.button3.TabIndex = 31;
@@ -138,7 +140,7 @@
             // 
             // txbID
             // 
-            this.txbID.Location = new System.Drawing.Point(14, 38);
+            this.txbID.Location = new System.Drawing.Point(14, 67);
             this.txbID.Name = "txbID";
             this.txbID.ReadOnly = true;
             this.txbID.Size = new System.Drawing.Size(49, 20);
@@ -149,7 +151,7 @@
             this.button2.BackColor = System.Drawing.Color.Red;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.Snow;
-            this.button2.Location = new System.Drawing.Point(14, 401);
+            this.button2.Location = new System.Drawing.Point(14, 454);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(204, 35);
             this.button2.TabIndex = 29;
@@ -159,7 +161,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(14, 321);
+            this.button1.Location = new System.Drawing.Point(14, 374);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(204, 34);
             this.button1.TabIndex = 28;
@@ -169,7 +171,7 @@
             // 
             // txbIngredienti
             // 
-            this.txbIngredienti.Location = new System.Drawing.Point(14, 124);
+            this.txbIngredienti.Location = new System.Drawing.Point(14, 187);
             this.txbIngredienti.Name = "txbIngredienti";
             this.txbIngredienti.Size = new System.Drawing.Size(204, 127);
             this.txbIngredienti.TabIndex = 27;
@@ -178,7 +180,7 @@
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(57, 269);
+            this.checkBox1.Location = new System.Drawing.Point(56, 331);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(67, 17);
             this.checkBox1.TabIndex = 26;
@@ -226,7 +228,8 @@
             this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.Size = new System.Drawing.Size(612, 764);
             this.dataGridView1.TabIndex = 25;
-            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);            // 
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
+            // 
             // iDDataGridViewTextBoxColumn
             // 
             this.iDDataGridViewTextBoxColumn.DataPropertyName = "ID";
@@ -258,19 +261,10 @@
             this.isActiveDataGridViewCheckBoxColumn.HeaderText = "isActive";
             this.isActiveDataGridViewCheckBoxColumn.Name = "isActiveDataGridViewCheckBoxColumn";
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(11, 270);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(40, 13);
-            this.label4.TabIndex = 23;
-            this.label4.Text = "Attiva?";
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(80, 108);
+            this.label3.Location = new System.Drawing.Point(11, 162);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(56, 13);
             this.label3.TabIndex = 22;
@@ -279,7 +273,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(169, 61);
+            this.label2.Location = new System.Drawing.Point(154, 103);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(39, 13);
             this.label2.TabIndex = 21;
@@ -288,7 +282,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(41, 61);
+            this.label1.Location = new System.Drawing.Point(11, 103);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(62, 13);
             this.label1.TabIndex = 20;
@@ -296,14 +290,14 @@
             // 
             // txbPrice
             // 
-            this.txbPrice.Location = new System.Drawing.Point(159, 85);
+            this.txbPrice.Location = new System.Drawing.Point(157, 125);
             this.txbPrice.Name = "txbPrice";
-            this.txbPrice.Size = new System.Drawing.Size(59, 20);
+            this.txbPrice.Size = new System.Drawing.Size(61, 20);
             this.txbPrice.TabIndex = 19;
             // 
             // txbName
             // 
-            this.txbName.Location = new System.Drawing.Point(14, 85);
+            this.txbName.Location = new System.Drawing.Point(14, 125);
             this.txbName.Name = "txbName";
             this.txbName.Size = new System.Drawing.Size(122, 20);
             this.txbName.TabIndex = 17;
@@ -401,6 +395,24 @@
             // 
             this.prenotazioniTableAdapter.ClearBeforeFill = true;
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(11, 46);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(18, 13);
+            this.label4.TabIndex = 32;
+            this.label4.Text = "ID";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(11, 332);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(40, 13);
+            this.label5.TabIndex = 33;
+            this.label5.Text = "Attivo?";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -439,7 +451,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn prezzoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn descrizioneDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewCheckBoxColumn isActiveDataGridViewCheckBoxColumn;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
@@ -462,6 +473,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn timestampDataGridViewTextBoxColumn;
         private System.Windows.Forms.TextBox txbID;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label4;
     }
 }
 
