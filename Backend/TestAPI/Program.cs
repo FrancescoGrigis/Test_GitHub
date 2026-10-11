@@ -21,90 +21,47 @@ app.UseCors();
 string connectionString =
     @"Server=(localdb)\MSSQLLocalDB;Database=DemoDB;Trusted_Connection=True;TrustServerCertificate=True;";
 
-// POST prenotazione
-app.MapPost("/api/prenotazioni", async (PrenotazioneDto dati) =>
+// 1. GET: Per leggere solo le pizze attive (isActive = true) e passargli ID, Nome, Descrizione, Prezzo
+app.MapGet("/api/pizze", async () =>
 {
-    if (dati == null)
-        return Results.BadRequest("Dati mancanti.");
-
-    if (string.IsNullOrWhiteSpace(dati.Nome))
-        return Results.BadRequest("Nome obbligatorio.");
-
-    if (string.IsNullOrWhiteSpace(dati.Telefono))
-        return Results.BadRequest("Telefono obbligatorio.");
-
     try
     {
         using SqlConnection conn = new SqlConnection(connectionString);
-
         await conn.OpenAsync();
 
-        string query = @"
-            INSERT INTO Prenotazioni
-            (
-                Nome,
-                Telefono,
-                Data,
-                Ora,
-                Servizio,
-                Ospiti,
-                Timestamp
-            )
-            VALUES
-            (
-                @Nome,
-                @Telefono,
-                @Data,
-                @Ora,
-                @Servizio,
-                @Ospiti,
-                @Timestamp
-            )";
-
+        // Filtriamo direttamente dal database quelle con isActive = 1 (true)
+        string query = "SELECT Id, Nome, Descrizione, Prezzo FROM Pizze WHERE IsActive = 1";
         using SqlCommand cmd = new SqlCommand(query, conn);
 
-        cmd.Parameters.AddWithValue("@Nome", dati.Nome);
-        cmd.Parameters.AddWithValue("@Telefono", dati.Telefono);
-        cmd.Parameters.AddWithValue("@Data", dati.Data);
-        cmd.Parameters.AddWithValue("@Ora", dati.Ora);
-        cmd.Parameters.AddWithValue("@Servizio", dati.Servizio);
+        using SqlDataReader reader = await cmd.ExecuteReaderAsync();
 
-        if (int.TryParse(dati.Ospiti, out int ospiti))
-            cmd.Parameters.AddWithValue("@Ospiti", ospiti);
-        else
-            cmd.Parameters.AddWithValue("@Ospiti", 0);
+        var listaPizze = new List<PizzaDto>();
 
-        if (DateTime.TryParse(dati.Timestamp, out DateTime timestamp))
-            cmd.Parameters.AddWithValue("@Timestamp", timestamp);
-        else
-            cmd.Parameters.AddWithValue("@Timestamp", DateTime.Now);
-
-        await cmd.ExecuteNonQueryAsync();
-
-        return Results.Ok(new
+        while (await reader.ReadAsync())
         {
-            Messaggio = "Prenotazione salvata con successo"
-        });
+            listaPizze.Add(new PizzaDto(
+                reader["Id"] != DBNull.Value ? Convert.ToInt32(reader["Id"]) : 0,
+                reader["Nome"]?.ToString() ?? "",
+                reader["Descrizione"]?.ToString() ?? "",
+                reader["Prezzo"] != DBNull.Value ? Convert.ToDecimal(reader["Prezzo"]) : 0
+            ));
+        }
+
+        return Results.Ok(listaPizze);
     }
     catch (Exception ex)
     {
         Console.WriteLine(ex);
-
-        return Results.BadRequest(new
-        {
-            Errore = ex.Message
-        });
+        return Results.BadRequest(new { Errore = ex.Message });
     }
 });
 
 app.Run();
 
-public record PrenotazioneDto(
+// DTO per rappresentare la Pizza
+public record PizzaDto(
+    int Id,
     string Nome,
-    string Telefono,
-    string Data,
-    string Ora,
-    string Servizio,
-    string Ospiti,
-    string Timestamp
+    string Descrizione,
+    decimal Prezzo
 );
