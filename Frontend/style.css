@@ -166,15 +166,17 @@ body {
     color: #ffffff !important;
     font-weight: 700;
     padding: 0.65rem 1.6rem !important;
-    border-radius: 30px;
+    border-radius: 30px !important;
     transition: all 0.3s ease !important;
     animation: pulseGlow 3s infinite;
     position: relative;
-    overflow: hidden;
     box-shadow: 0 4px 15px rgba(214, 40, 40, 0.4);
     border: none;
+    display: inline-flex; /* <--- Aggiunto per gestire i bordi arrotondati */
+    align-items: center; /* <--- Aggiunto */
+    justify-content: center; /* <--- Aggiunto */
+    text-decoration: none;
 }
-
 .btn-prenota::after {
     display: none !important;
 }
@@ -183,7 +185,6 @@ body {
     transform: translateY(-2px) scale(1.05);
     box-shadow: var(--warm-glow);
 }
-
 .hero {
     min-height: 100vh;
     display: flex;
@@ -313,6 +314,8 @@ body {
     outline: none;
     text-transform: uppercase;
     box-shadow: 0 8px 25px rgba(214, 40, 40, 0.45);
+    position: relative;
+    z-index: 2;
 }
 
 .btn-hero:hover {
@@ -1125,4 +1128,17 @@ body {
 
 ::-webkit-scrollbar-thumb:hover {
     background: var(--accent-gold);
+}
+
+/* Rende il menu e la lista liberi di far "straripare" le animazioni dei pulsanti senza tagliarle */
+.nav ul {
+    overflow: visible !important;
+}
+
+.nav li {
+    overflow: visible !important;
+}
+
+.header {
+    overflow: visible !important;
 }
