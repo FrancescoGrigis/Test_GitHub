@@ -60,17 +60,6 @@ body {
     50% { box-shadow: 0 0 35px rgba(244, 162, 97, 0.7); }
 }
 
-@keyframes rotateSlow {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
-@keyframes shimmerGradient {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
-
 @keyframes flameBorder {
     0% { background-position: 0 0; }
     100% { background-position: 60px 0; }
@@ -174,16 +163,16 @@ body {
 
 .btn-prenota {
     background: var(--fire-gradient);
-    background-size: 200% 200%;
     color: #ffffff !important;
     font-weight: 700;
     padding: 0.65rem 1.6rem !important;
     border-radius: 30px;
     transition: all 0.3s ease !important;
-    animation: pulseGlow 3s infinite, shimmerGradient 4s ease infinite;
+    animation: pulseGlow 3s infinite;
     position: relative;
     overflow: hidden;
     box-shadow: 0 4px 15px rgba(214, 40, 40, 0.4);
+    border: none;
 }
 
 .btn-prenota::after {
@@ -204,7 +193,7 @@ body {
     position: relative;
     background: linear-gradient(135deg, rgba(15,12,10,0.92), rgba(15,12,10,0.82)),
                 url('https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
-    padding-top: 100px;
+    padding: 120px 2rem 80px 2rem;
     overflow: hidden;
 }
 
@@ -274,10 +263,9 @@ body {
     font-size: 4.8rem;
     font-family: 'Playfair Display', serif;
     background: var(--gold-gradient);
-    background-size: 200% 200%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    animation: fadeInUp 1s ease-out, shimmerGradient 6s ease infinite;
+    animation: fadeInUp 1s ease-out;
     margin-bottom: 1rem;
     text-shadow: 0 10px 20px rgba(0,0,0,0.6);
     line-height: 1.1;
@@ -296,6 +284,8 @@ body {
     position: relative;
     overflow: hidden;
     display: inline-block;
+    border: none;
+    outline: none;
 }
 
 .ripple {
@@ -309,7 +299,6 @@ body {
 
 .btn-hero {
     background: var(--fire-gradient);
-    background-size: 200% 200%;
     color: #ffffff;
     padding: 1.2rem 3.2rem;
     text-decoration: none;
@@ -318,9 +307,10 @@ body {
     font-weight: 700;
     letter-spacing: 2px;
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    animation: fadeInUp 1s ease-out 0.6s backwards, shimmerGradient 4s ease infinite;
+    animation: fadeInUp 1s ease-out 0.6s backwards;
     display: inline-block;
-    border: 2px solid transparent;
+    border: none;
+    outline: none;
     text-transform: uppercase;
     box-shadow: 0 8px 25px rgba(214, 40, 40, 0.45);
 }
@@ -328,7 +318,6 @@ body {
 .btn-hero:hover {
     transform: translateY(-5px) scale(1.05);
     box-shadow: 0 15px 35px rgba(244, 162, 97, 0.6);
-    border-color: #ffffff;
     color: #ffffff;
 }
 
@@ -336,7 +325,7 @@ body {
     display: flex;
     justify-content: center;
     gap: 3.5rem;
-    margin-top: 4rem;
+    margin-top: 3.5rem;
     animation: fadeInUp 1s ease-out 0.9s backwards;
 }
 
@@ -369,12 +358,12 @@ body {
 
 .hero-scroll {
     position: absolute;
-    bottom: 30px;
+    bottom: 12px;
     left: 50%;
     transform: translateX(-50%);
     animation: floatEffect 2s ease-in-out infinite;
     color: var(--accent-gold);
-    font-size: 2.2rem;
+    font-size: 1.6rem;
     cursor: pointer;
     z-index: 5;
     transition: color 0.3s ease;
@@ -486,7 +475,7 @@ body {
     border-radius: 18px;
     padding: 2.8rem 1.8rem;
     text-align: center;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: transform 0.1s ease, border-color 0.4s ease, box-shadow 0.4s ease;
     position: relative;
     overflow: hidden;
     transform-style: preserve-3d;
@@ -506,7 +495,6 @@ body {
 }
 
 .feature-card:hover {
-    transform: translateY(-12px) scale(1.02);
     border-color: rgba(231, 111, 81, 0.5);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
 }
@@ -566,13 +554,15 @@ body {
     background: var(--card-bg);
     padding: 2.8rem 2rem;
     border-radius: 20px;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: transform 0.1s ease, border-color 0.4s ease, box-shadow 0.4s ease;
     border: 1px solid rgba(255, 255, 255, 0.08);
     position: relative;
     overflow: hidden;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    transform-style: preserve-3d;
+    perspective: 1000px;
 }
 
 .pizza-card.featured {
@@ -595,7 +585,6 @@ body {
 }
 
 .pizza-card:hover {
-    transform: translateY(-12px);
     box-shadow: 0 25px 50px rgba(0, 0, 0, 0.8);
     border-color: var(--accent-gold);
 }
@@ -616,12 +605,10 @@ body {
 .prezzo {
     font-size: 2.2rem;
     background: var(--gold-gradient);
-    background-size: 200% 200%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-weight: 700;
     font-family: 'Playfair Display', serif;
-    animation: shimmerGradient 5s ease infinite;
 }
 
 .pizza-card p {
@@ -769,6 +756,12 @@ body {
     font-family: inherit;
     font-size: 1.05rem;
     transition: all 0.3s ease;
+    outline: none;
+}
+
+.form-group input:focus, .form-group select:focus {
+    border-color: var(--accent-gold);
+    box-shadow: 0 0 10px rgba(244, 162, 97, 0.3);
 }
 
 .form-group select option {
@@ -856,13 +849,13 @@ body {
     animation: zoomIn 0.25s ease-out;
 }
 
-/* BUTTON SUBMIT */
+/* BUTTON SUBMIT - CORRETTO SENZA BORDI O CONTORNI RETTANGOLARI */
 .btn-submit {
     background: var(--fire-gradient);
-    background-size: 200% 200%;
     color: #ffffff;
     padding: 1.2rem 2.5rem;
-    border: 2px solid transparent;
+    border: none;
+    outline: none;
     border-radius: 50px;
     cursor: pointer;
     width: 100%;
@@ -873,13 +866,11 @@ body {
     box-shadow: 0 8px 25px rgba(214, 40, 40, 0.45);
     text-transform: uppercase;
     margin-top: 1rem;
-    animation: shimmerGradient 4s ease infinite;
 }
 
 .btn-submit:hover {
     transform: translateY(-3px);
     box-shadow: 0 12px 35px rgba(244, 162, 97, 0.7);
-    border-color: #ffffff;
 }
 
 .modal-overlay {
@@ -955,6 +946,7 @@ body {
     color: #ffffff;
     padding: 0.85rem 2.8rem;
     border: none;
+    outline: none;
     border-radius: 30px;
     font-size: 1.1rem;
     font-weight: 700;
@@ -1133,4 +1125,4 @@ body {
 
 ::-webkit-scrollbar-thumb:hover {
     background: var(--accent-gold);
-}s
+}
