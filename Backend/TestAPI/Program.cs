@@ -22,14 +22,15 @@ string connectionString =
     @"Server=(localdb)\MSSQLLocalDB;Database=DemoDB;Trusted_Connection=True;TrustServerCertificate=True;";
 
 // 1. GET: Per leggere solo le pizze attive (isActive = true)
-app.MapGet("/api/pizze", async () =>
+app.MapGet("/api/DemoTB", async () =>
 {
     try
     {
         using SqlConnection conn = new SqlConnection(connectionString);
         await conn.OpenAsync();
 
-        string query = "SELECT Id, Nome, Descrizione, Prezzo FROM Pizze WHERE IsActive = 1";
+        // Selezioniamo anche lo Stato dal database
+        string query = "SELECT ID, Nome, Descrizione, Prezzo, Stato FROM DemoTB";
         using SqlCommand cmd = new SqlCommand(query, conn);
 
         using SqlDataReader reader = await cmd.ExecuteReaderAsync();
@@ -39,10 +40,11 @@ app.MapGet("/api/pizze", async () =>
         while (await reader.ReadAsync())
         {
             listaPizze.Add(new PizzaDto(
-                reader["Id"] != DBNull.Value ? Convert.ToInt32(reader["Id"]) : 0,
+                reader["ID"] != DBNull.Value ? Convert.ToInt32(reader["ID"]) : 0,
                 reader["Nome"]?.ToString() ?? "",
                 reader["Descrizione"]?.ToString() ?? "",
-                reader["Prezzo"] != DBNull.Value ? Convert.ToDecimal(reader["Prezzo"]) : 0
+                reader["Prezzo"] != DBNull.Value ? Convert.ToDecimal(reader["Prezzo"]) : 0,
+                reader["Stato"] != DBNull.Value ? Convert.ToBoolean(reader["Stato"]) : false
             ));
         }
 
@@ -90,12 +92,12 @@ app.Run();
 
 // DTO per rappresentare la Pizza
 public record PizzaDto(
-    int Id,
+    int ID,
     string Nome,
     string Descrizione,
-    decimal Prezzo
+    decimal Prezzo,
+    bool Stato
 );
-
 // DTO per ricevere i dati della prenotazione dal frontend JS
 public record PrenotazioneDto(
     string nome,

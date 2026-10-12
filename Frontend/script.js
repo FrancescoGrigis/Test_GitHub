@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
        ========================================================== */
     const API_ENDPOINTS = {
         prenotazioni: 'http://localhost:5178/api/prenotazioni',
-        menu: 'http://localhost:5178/api/menu',           // Endpoint del database Menu
+        menu: 'http://localhost:5178/api/DemoTB', // <--- Cambiato da /api/menu a /api/pizze
         clienti: 'http://localhost:5178/api/clienti'
     };
 
@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const elementiMenu = await response.json();
 
             // Filtra solo gli elementi che hanno lo Stato a true (gestisce sia 'Stato' che 'stato')
-            const elementiAttivi = elementiMenu.filter(item => item.stato === true || item.Stato === true);
+            const elementiAttivi = elementiMenu.filter(item => item.Stato === true || item.stato === true);
 
             menuContainer.innerHTML = ''; // Pulisce il contenitore prima di inserire i dati
 
@@ -33,21 +33,31 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
             // Genera e inserisce gli elementi dinamicamente nella pagina
+            // Genera e inserisce gli elementi dinamicamente nella pagina
+            // Genera e inserisce le card delle pizze dinamicamente nella pagina
             elementiAttivi.forEach(item => {
                 const itemDiv = document.createElement('div');
-                itemDiv.className = 'menu-item'; // Puoi adattare le classi CSS in base al tuo stile
+                itemDiv.className = 'pizza-card'; // Usa la classe originale della card
                 
-                // Modifica le proprietà (es. nome, descrizione, prezzo) in base a come sono salvate nel database C#
+                // Legge le proprietà gestendo sia maiuscole che minuscole
+                const nomePizza = item.Nome || item.nome || 'Prodotto';
+                const descPizza = item.Descrizione || item.descrizione || '';
+                const prezzoPizza = item.Prezzo !== undefined ? item.Prezzo : (item.prezzo || 0);
+
                 itemDiv.innerHTML = `
-                    <div class="menu-item-info">
-                        <h4>${item.nome || item.titolo || 'Prodotto'}</h4>
-                        <p>${item.descrizione || ''}</p>
+                    <div class="pizza-header">
+                        <h3>${nomePizza}</h3>
+                        <div class="prezzo">€${Number(prezzoPizza).toFixed(2)}</div>
                     </div>
-                    <div class="menu-item-price">€${item.prezzo ? item.prezzo.toFixed(2) : '0.00'}</div>
+                    <p>${descPizza}</p>
+                    <div class="pizza-tags">
+                        <span class="tag">Fresco</span>
+                        <span class="tag">Artigianale</span>
+                    </div>
                 `;
                 menuContainer.appendChild(itemDiv);
             });
-
+            
         } catch (error) {
             console.error('Errore di connessione al database del menu:', error);
             menuContainer.innerHTML = '<p style="text-align: center; width: 100%; color: red;">Impossibile caricare il menu dal server.</p>';
