@@ -1,13 +1,24 @@
 document.addEventListener("DOMContentLoaded", () => {
+    /* ==========================================================
+       CONFIGURAZIONE MULTI-DATABASE / ENDPOINT API .NET CORE
+       ========================================================== */
+    const API_ENDPOINTS = {
+        prenotazioni: 'http://localhost:5178/api/prenotazioni',
+        prodotti: 'http://localhost:5178/api/prodotti', // Aggiungi qui altri endpoint se necessario
+        clienti: 'http://localhost:5178/api/clienti'         // Aggiungi qui altri endpoint se necessario
+    };
+
     /* Header Scroll Effect */
     const navbar = document.getElementById('navbar');
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
-        }
-    });
+    if (navbar) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+    }
 
     /* Mobile Menu Toggle */
     const menuBtn = document.querySelector('.menu-mobile');
@@ -63,7 +74,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }, { threshold: 0.5 });
 
-    if (counters.length > 0 && counters[0].parentElement.parentElement) {
+    if (counters.length > 0 && counters[0].parentElement && counters[0].parentElement.parentElement) {
         countUpObserver.observe(counters[0].parentElement.parentElement);
     }
 
@@ -86,7 +97,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    /* Button Ripple Effect */
+    /* Button Ripple Effect (Corretto) */
     const rippleContainers = document.querySelectorAll('.btn-ripple');
     rippleContainers.forEach(container => {
         container.addEventListener('click', function(e) {
@@ -114,18 +125,20 @@ document.addEventListener("DOMContentLoaded", () => {
         const optionItems = select.querySelectorAll(".luxury-option");
         const hiddenInput = select.parentElement.querySelector("input[type='hidden']");
 
-        selected.addEventListener("click", (e) => {
-            e.stopPropagation();
-            luxurySelects.forEach(s => {
-                if (s !== select) s.classList.remove("open");
+        if (selected) {
+            selected.addEventListener("click", (e) => {
+                e.stopPropagation();
+                luxurySelects.forEach(s => {
+                    if (s !== select) s.classList.remove("open");
+                });
+                select.classList.toggle("open");
             });
-            select.classList.toggle("open");
-        });
+        }
 
         optionItems.forEach(option => {
             option.addEventListener("click", () => {
                 const value = option.getAttribute("data-value");
-                selected.textContent = option.textContent;
+                if (selected) selected.textContent = option.textContent;
                 if (hiddenInput) {
                     hiddenInput.value = value;
                 }
@@ -180,26 +193,27 @@ document.addEventListener("DOMContentLoaded", () => {
             const servizioInput = document.getElementById("servizio");
             const servizioSelect = document.getElementById("servizioSelect");
 
-            if (!servizioInput.value) {
+            if (servizioInput && !servizioInput.value) {
                 if (servizioSelect) servizioSelect.classList.add("error");
                 showToast("Seleziona una tipologia di servizio valida.", "error");
                 return;
             }
 
             const formData = {
-                nome: document.getElementById('nome').value,
-                telefono: document.getElementById('telefono').value,
-                data: document.getElementById('data').value,
-                ora: document.getElementById('ora').value,
-                servizio: servizioInput.value,
-                ospiti: document.getElementById('ospiti').value,
+                nome: document.getElementById('nome')?.value || '',
+                telefono: document.getElementById('telefono')?.value || '',
+                data: document.getElementById('data')?.value || '',
+                ora: document.getElementById('ora')?.value || '',
+                servizio: servizioInput?.value || '',
+                ospiti: document.getElementById('ospiti')?.value || '',
                 timestamp: new Date().toISOString()
             };
 
             let backendSynced = false;
 
             try {
-                const response = await fetch('http://localhost:5178/api/prenotazioni', {
+                // Utilizza l'endpoint configurato per le prenotazioni
+                const response = await fetch(API_ENDPOINTS.prenotazioni, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -258,6 +272,23 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     }
+
+    /* Funzione di utilità generale per interrogare altri database/tabelle del backend */
+    window.fetchDatabaseData = async function(dbKey) {
+        const endpoint = API_ENDPOINTS[dbKey];
+        if (!endpoint) {
+            console.error(`Endpoint per "${dbKey}" non trovato.`);
+            return null;
+        }
+        try {
+            const res = await fetch(endpoint);
+            if (!res.ok) throw new Error(`Errore HTTP: ${res.status}`);
+            return await res.json();
+        } catch (err) {
+            console.error(`Impossibile recuperare i dati da ${dbKey}:`, err);
+            return null;
+        }
+    };
 
     /* Smooth Scroll Indicator */
     const scrollBtn = document.getElementById('scrollBtn');
