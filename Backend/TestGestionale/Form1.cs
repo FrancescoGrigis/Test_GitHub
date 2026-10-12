@@ -234,5 +234,10 @@ namespace TestGestionale
 
             this.prenotazioniTableAdapter.Fill(this.demoDBDataSet11.Prenotazioni);
         }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            this.prenotazioniTableAdapter.Fill(this.demoDBDataSet11.Prenotazioni);
+        }
     }
 }

@@ -43,6 +43,14 @@
             this.txbIngredienti = new System.Windows.Forms.RichTextBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.iDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nomeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.prezzoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descrizioneDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.statoDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.demoTBBindingSource4 = new System.Windows.Forms.BindingSource(this.components);
+            this.demoDBDataSet1BindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.demoDBDataSet1 = new TestGestionale.DemoDBDataSet();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -63,17 +71,6 @@
             this.txbOggetto = new System.Windows.Forms.TextBox();
             this.txbDestinatario = new System.Windows.Forms.TextBox();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.prenotazioniBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.demoDBDataSet1 = new TestGestionale.DemoDBDataSet();
-            this.demoTBBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
-            this.demoDBDataSet = new TestGestionale.DemoDBDataSet();
-            this.demoTBBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.demoTBTableAdapter = new TestGestionale.DemoDBDataSetTableAdapters.DemoTBTableAdapter();
-            this.demoTBBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.demoDBDataSet2 = new TestGestionale.DemoDBDataSet();
-            this.demoDBDataSet11 = new TestGestionale.DemoDBDataSet1();
-            this.prenotazioniBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.prenotazioniTableAdapter = new TestGestionale.DemoDBDataSet1TableAdapters.PrenotazioniTableAdapter();
             this.iDDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nomeDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -82,34 +79,38 @@
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.prenotazioniBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.demoDBDataSet11 = new TestGestionale.DemoDBDataSet1();
+            this.prenotazioniBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.demoTBBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
+            this.demoDBDataSet = new TestGestionale.DemoDBDataSet();
+            this.demoTBBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.demoTBTableAdapter = new TestGestionale.DemoDBDataSetTableAdapters.DemoTBTableAdapter();
+            this.demoTBBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.demoDBDataSet2 = new TestGestionale.DemoDBDataSet();
+            this.prenotazioniTableAdapter = new TestGestionale.DemoDBDataSet1TableAdapters.PrenotazioniTableAdapter();
             this.demoDBDataSet21 = new TestGestionale.DemoDBDataSet2();
             this.demoTBBindingSource3 = new System.Windows.Forms.BindingSource(this.components);
             this.demoTBTableAdapter1 = new TestGestionale.DemoDBDataSet2TableAdapters.DemoTBTableAdapter();
-            this.demoDBDataSet1BindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.demoTBBindingSource4 = new System.Windows.Forms.BindingSource(this.components);
-            this.iDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nomeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.prezzoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.descrizioneDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.statoDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.button9 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.demoTBBindingSource4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.demoDBDataSet1BindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.demoDBDataSet1)).BeginInit();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.prenotazioniBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.demoDBDataSet11)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.prenotazioniBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.demoDBDataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.demoTBBindingSource2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.demoDBDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.demoTBBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.demoTBBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.demoDBDataSet2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.demoDBDataSet11)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.prenotazioniBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.demoDBDataSet21)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.demoTBBindingSource3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.demoDBDataSet1BindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.demoTBBindingSource4)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -266,6 +267,52 @@
             this.dataGridView1.TabIndex = 25;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
+            // iDDataGridViewTextBoxColumn
+            // 
+            this.iDDataGridViewTextBoxColumn.DataPropertyName = "ID";
+            this.iDDataGridViewTextBoxColumn.HeaderText = "ID";
+            this.iDDataGridViewTextBoxColumn.Name = "iDDataGridViewTextBoxColumn";
+            this.iDDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // nomeDataGridViewTextBoxColumn
+            // 
+            this.nomeDataGridViewTextBoxColumn.DataPropertyName = "Nome";
+            this.nomeDataGridViewTextBoxColumn.HeaderText = "Nome";
+            this.nomeDataGridViewTextBoxColumn.Name = "nomeDataGridViewTextBoxColumn";
+            // 
+            // prezzoDataGridViewTextBoxColumn
+            // 
+            this.prezzoDataGridViewTextBoxColumn.DataPropertyName = "Prezzo";
+            this.prezzoDataGridViewTextBoxColumn.HeaderText = "Prezzo";
+            this.prezzoDataGridViewTextBoxColumn.Name = "prezzoDataGridViewTextBoxColumn";
+            // 
+            // descrizioneDataGridViewTextBoxColumn
+            // 
+            this.descrizioneDataGridViewTextBoxColumn.DataPropertyName = "Descrizione";
+            this.descrizioneDataGridViewTextBoxColumn.HeaderText = "Descrizione";
+            this.descrizioneDataGridViewTextBoxColumn.Name = "descrizioneDataGridViewTextBoxColumn";
+            // 
+            // statoDataGridViewCheckBoxColumn
+            // 
+            this.statoDataGridViewCheckBoxColumn.DataPropertyName = "Stato";
+            this.statoDataGridViewCheckBoxColumn.HeaderText = "Stato";
+            this.statoDataGridViewCheckBoxColumn.Name = "statoDataGridViewCheckBoxColumn";
+            // 
+            // demoTBBindingSource4
+            // 
+            this.demoTBBindingSource4.DataMember = "DemoTB";
+            this.demoTBBindingSource4.DataSource = this.demoDBDataSet1BindingSource;
+            // 
+            // demoDBDataSet1BindingSource
+            // 
+            this.demoDBDataSet1BindingSource.DataSource = this.demoDBDataSet1;
+            this.demoDBDataSet1BindingSource.Position = 0;
+            // 
+            // demoDBDataSet1
+            // 
+            this.demoDBDataSet1.DataSetName = "DemoDBDataSet";
+            this.demoDBDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -309,6 +356,7 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.button9);
             this.tabPage2.Controls.Add(this.button8);
             this.tabPage2.Controls.Add(this.button7);
             this.tabPage2.Controls.Add(this.button6);
@@ -472,58 +520,6 @@
             this.dataGridView2.TabIndex = 0;
             this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
             // 
-            // prenotazioniBindingSource
-            // 
-            this.prenotazioniBindingSource.DataMember = "Prenotazioni";
-            // 
-            // demoDBDataSet1
-            // 
-            this.demoDBDataSet1.DataSetName = "DemoDBDataSet";
-            this.demoDBDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // demoTBBindingSource2
-            // 
-            this.demoTBBindingSource2.DataMember = "DemoTB";
-            this.demoTBBindingSource2.DataSource = this.demoDBDataSet1;
-            // 
-            // demoDBDataSet
-            // 
-            this.demoDBDataSet.DataSetName = "DemoDBDataSet";
-            this.demoDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // demoTBBindingSource
-            // 
-            this.demoTBBindingSource.DataMember = "DemoTB";
-            this.demoTBBindingSource.DataSource = this.demoDBDataSet;
-            // 
-            // demoTBTableAdapter
-            // 
-            this.demoTBTableAdapter.ClearBeforeFill = true;
-            // 
-            // demoTBBindingSource1
-            // 
-            this.demoTBBindingSource1.DataMember = "DemoTB";
-            this.demoTBBindingSource1.DataSource = this.demoDBDataSet;
-            // 
-            // demoDBDataSet2
-            // 
-            this.demoDBDataSet2.DataSetName = "DemoDBDataSet";
-            this.demoDBDataSet2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // demoDBDataSet11
-            // 
-            this.demoDBDataSet11.DataSetName = "DemoDBDataSet1";
-            this.demoDBDataSet11.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // prenotazioniBindingSource1
-            // 
-            this.prenotazioniBindingSource1.DataMember = "Prenotazioni";
-            this.prenotazioniBindingSource1.DataSource = this.demoDBDataSet11;
-            // 
-            // prenotazioniTableAdapter
-            // 
-            this.prenotazioniTableAdapter.ClearBeforeFill = true;
-            // 
             // iDDataGridViewTextBoxColumn2
             // 
             this.iDDataGridViewTextBoxColumn2.DataPropertyName = "ID";
@@ -573,6 +569,53 @@
             this.dataGridViewTextBoxColumn6.HeaderText = "Timestamp";
             this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
             // 
+            // prenotazioniBindingSource1
+            // 
+            this.prenotazioniBindingSource1.DataMember = "Prenotazioni";
+            this.prenotazioniBindingSource1.DataSource = this.demoDBDataSet11;
+            // 
+            // demoDBDataSet11
+            // 
+            this.demoDBDataSet11.DataSetName = "DemoDBDataSet1";
+            this.demoDBDataSet11.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // prenotazioniBindingSource
+            // 
+            this.prenotazioniBindingSource.DataMember = "Prenotazioni";
+            // 
+            // demoTBBindingSource2
+            // 
+            this.demoTBBindingSource2.DataMember = "DemoTB";
+            this.demoTBBindingSource2.DataSource = this.demoDBDataSet1;
+            // 
+            // demoDBDataSet
+            // 
+            this.demoDBDataSet.DataSetName = "DemoDBDataSet";
+            this.demoDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // demoTBBindingSource
+            // 
+            this.demoTBBindingSource.DataMember = "DemoTB";
+            this.demoTBBindingSource.DataSource = this.demoDBDataSet;
+            // 
+            // demoTBTableAdapter
+            // 
+            this.demoTBTableAdapter.ClearBeforeFill = true;
+            // 
+            // demoTBBindingSource1
+            // 
+            this.demoTBBindingSource1.DataMember = "DemoTB";
+            this.demoTBBindingSource1.DataSource = this.demoDBDataSet;
+            // 
+            // demoDBDataSet2
+            // 
+            this.demoDBDataSet2.DataSetName = "DemoDBDataSet";
+            this.demoDBDataSet2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // prenotazioniTableAdapter
+            // 
+            this.prenotazioniTableAdapter.ClearBeforeFill = true;
+            // 
             // demoDBDataSet21
             // 
             this.demoDBDataSet21.DataSetName = "DemoDBDataSet2";
@@ -587,46 +630,15 @@
             // 
             this.demoTBTableAdapter1.ClearBeforeFill = true;
             // 
-            // demoDBDataSet1BindingSource
+            // button9
             // 
-            this.demoDBDataSet1BindingSource.DataSource = this.demoDBDataSet1;
-            this.demoDBDataSet1BindingSource.Position = 0;
-            // 
-            // demoTBBindingSource4
-            // 
-            this.demoTBBindingSource4.DataMember = "DemoTB";
-            this.demoTBBindingSource4.DataSource = this.demoDBDataSet1BindingSource;
-            // 
-            // iDDataGridViewTextBoxColumn
-            // 
-            this.iDDataGridViewTextBoxColumn.DataPropertyName = "ID";
-            this.iDDataGridViewTextBoxColumn.HeaderText = "ID";
-            this.iDDataGridViewTextBoxColumn.Name = "iDDataGridViewTextBoxColumn";
-            this.iDDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // nomeDataGridViewTextBoxColumn
-            // 
-            this.nomeDataGridViewTextBoxColumn.DataPropertyName = "Nome";
-            this.nomeDataGridViewTextBoxColumn.HeaderText = "Nome";
-            this.nomeDataGridViewTextBoxColumn.Name = "nomeDataGridViewTextBoxColumn";
-            // 
-            // prezzoDataGridViewTextBoxColumn
-            // 
-            this.prezzoDataGridViewTextBoxColumn.DataPropertyName = "Prezzo";
-            this.prezzoDataGridViewTextBoxColumn.HeaderText = "Prezzo";
-            this.prezzoDataGridViewTextBoxColumn.Name = "prezzoDataGridViewTextBoxColumn";
-            // 
-            // descrizioneDataGridViewTextBoxColumn
-            // 
-            this.descrizioneDataGridViewTextBoxColumn.DataPropertyName = "Descrizione";
-            this.descrizioneDataGridViewTextBoxColumn.HeaderText = "Descrizione";
-            this.descrizioneDataGridViewTextBoxColumn.Name = "descrizioneDataGridViewTextBoxColumn";
-            // 
-            // statoDataGridViewCheckBoxColumn
-            // 
-            this.statoDataGridViewCheckBoxColumn.DataPropertyName = "Stato";
-            this.statoDataGridViewCheckBoxColumn.HeaderText = "Stato";
-            this.statoDataGridViewCheckBoxColumn.Name = "statoDataGridViewCheckBoxColumn";
+            this.button9.Location = new System.Drawing.Point(45, 750);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(24, 23);
+            this.button9.TabIndex = 46;
+            this.button9.Text = "Annulla";
+            this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
             // Form1
             // 
@@ -642,22 +654,22 @@
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.demoTBBindingSource4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.demoDBDataSet1BindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.demoDBDataSet1)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.prenotazioniBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.demoDBDataSet11)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.prenotazioniBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.demoDBDataSet1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.demoTBBindingSource2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.demoDBDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.demoTBBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.demoTBBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.demoDBDataSet2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.demoDBDataSet11)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.prenotazioniBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.demoDBDataSet21)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.demoTBBindingSource3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.demoDBDataSet1BindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.demoTBBindingSource4)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -731,6 +743,7 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn statoDataGridViewCheckBoxColumn;
         private System.Windows.Forms.BindingSource demoTBBindingSource4;
         private System.Windows.Forms.BindingSource demoDBDataSet1BindingSource;
+        private System.Windows.Forms.Button button9;
     }
 }
 
