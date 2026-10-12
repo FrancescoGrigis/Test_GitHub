@@ -4,9 +4,58 @@ document.addEventListener("DOMContentLoaded", () => {
        ========================================================== */
     const API_ENDPOINTS = {
         prenotazioni: 'http://localhost:5178/api/prenotazioni',
-        prodotti: 'http://localhost:5178/api/prodotti', // Aggiungi qui altri endpoint se necessario
-        clienti: 'http://localhost:5178/api/clienti'         // Aggiungi qui altri endpoint se necessario
+        menu: 'http://localhost:5178/api/menu',           // Endpoint del database Menu
+        clienti: 'http://localhost:5178/api/clienti'
     };
+
+    /* ==========================================================
+       GESTIONE DINAMICA DEL MENU (Filtro Stato = true)
+       ========================================================== */
+    async function caricaMenu() {
+        // Cerca un contenitore con id 'menuContainer' o classe '.menu-grid' nella tua pagina HTML
+        const menuContainer = document.getElementById('menuContainer') || document.querySelector('.menu-grid');
+        if (!menuContainer) return; // Se la sezione menu non è presente in questa pagina, esce senza errori
+
+        try {
+            const response = await fetch(API_ENDPOINTS.menu);
+            if (!response.ok) throw new Error('Errore nel recupero del menu dal server.');
+
+            const elementiMenu = await response.json();
+
+            // Filtra solo gli elementi che hanno lo Stato a true (gestisce sia 'Stato' che 'stato')
+            const elementiAttivi = elementiMenu.filter(item => item.stato === true || item.Stato === true);
+
+            menuContainer.innerHTML = ''; // Pulisce il contenitore prima di inserire i dati
+
+            if (elementiAttivi.length === 0) {
+                menuContainer.innerHTML = '<p style="text-align: center; width: 100%;">Nessun elemento disponibile nel menu al momento.</p>';
+                return;
+            }
+
+            // Genera e inserisce gli elementi dinamicamente nella pagina
+            elementiAttivi.forEach(item => {
+                const itemDiv = document.createElement('div');
+                itemDiv.className = 'menu-item'; // Puoi adattare le classi CSS in base al tuo stile
+                
+                // Modifica le proprietà (es. nome, descrizione, prezzo) in base a come sono salvate nel database C#
+                itemDiv.innerHTML = `
+                    <div class="menu-item-info">
+                        <h4>${item.nome || item.titolo || 'Prodotto'}</h4>
+                        <p>${item.descrizione || ''}</p>
+                    </div>
+                    <div class="menu-item-price">€${item.prezzo ? item.prezzo.toFixed(2) : '0.00'}</div>
+                `;
+                menuContainer.appendChild(itemDiv);
+            });
+
+        } catch (error) {
+            console.error('Errore di connessione al database del menu:', error);
+            menuContainer.innerHTML = '<p style="text-align: center; width: 100%; color: red;">Impossibile caricare il menu dal server.</p>';
+        }
+    }
+
+    // Esegue il caricamento del menu all'avvio della pagina
+    caricaMenu();
 
     /* Header Scroll Effect */
     const navbar = document.getElementById('navbar');
@@ -97,7 +146,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    /* Button Ripple Effect (Corretto) */
+    /* Button Ripple Effect */
     const rippleContainers = document.querySelectorAll('.btn-ripple');
     rippleContainers.forEach(container => {
         container.addEventListener('click', function(e) {
@@ -212,7 +261,6 @@ document.addEventListener("DOMContentLoaded", () => {
             let backendSynced = false;
 
             try {
-                // Utilizza l'endpoint configurato per le prenotazioni
                 const response = await fetch(API_ENDPOINTS.prenotazioni, {
                     method: 'POST',
                     headers: {
@@ -231,7 +279,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 console.warn('Backend .NET non raggiungibile, salvataggio di sicurezza in locale (localStorage)...', error);
             }
 
-            // Salvataggio di sicurezza in localStorage
             try {
                 const existingBookings = JSON.parse(localStorage.getItem('pizzeria_prenotazioni') || '[]');
                 existingBookings.push(formData);
@@ -272,23 +319,6 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     }
-
-    /* Funzione di utilità generale per interrogare altri database/tabelle del backend */
-    window.fetchDatabaseData = async function(dbKey) {
-        const endpoint = API_ENDPOINTS[dbKey];
-        if (!endpoint) {
-            console.error(`Endpoint per "${dbKey}" non trovato.`);
-            return null;
-        }
-        try {
-            const res = await fetch(endpoint);
-            if (!res.ok) throw new Error(`Errore HTTP: ${res.status}`);
-            return await res.json();
-        } catch (err) {
-            console.error(`Impossibile recuperare i dati da ${dbKey}:`, err);
-            return null;
-        }
-    };
 
     /* Smooth Scroll Indicator */
     const scrollBtn = document.getElementById('scrollBtn');
