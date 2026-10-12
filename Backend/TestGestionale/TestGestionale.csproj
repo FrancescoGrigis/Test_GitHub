@@ -165,6 +165,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DemoDBDataSet1.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DemoDBDataSet2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DemoDBDataSet2.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -206,6 +211,17 @@
     </None>
     <None Include="DemoDBDataSet1.xss">
       <DependentUpon>DemoDBDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="DemoDBDataSet2.xsc">
+      <DependentUpon>DemoDBDataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="DemoDBDataSet2.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DemoDBDataSet2.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DemoDBDataSet2.xss">
+      <DependentUpon>DemoDBDataSet2.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

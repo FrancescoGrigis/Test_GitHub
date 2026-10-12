@@ -287,7 +287,7 @@ namespace TestGestionale {
             
             private global::System.Data.DataColumn columnDescrizione;
             
-            private global::System.Data.DataColumn columnisActive;
+            private global::System.Data.DataColumn columnStato;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
@@ -356,9 +356,9 @@ namespace TestGestionale {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            public global::System.Data.DataColumn isActiveColumn {
+            public global::System.Data.DataColumn StatoColumn {
                 get {
-                    return this.columnisActive;
+                    return this.columnStato;
                 }
             }
             
@@ -399,14 +399,14 @@ namespace TestGestionale {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            public DemoTBRow AddDemoTBRow(string Nome, decimal Prezzo, string Descrizione, bool isActive) {
+            public DemoTBRow AddDemoTBRow(string Nome, decimal Prezzo, string Descrizione, bool Stato) {
                 DemoTBRow rowDemoTBRow = ((DemoTBRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         Nome,
                         Prezzo,
                         Descrizione,
-                        isActive};
+                        Stato};
                 rowDemoTBRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowDemoTBRow);
                 return rowDemoTBRow;
@@ -440,7 +440,7 @@ namespace TestGestionale {
                 this.columnNome = base.Columns["Nome"];
                 this.columnPrezzo = base.Columns["Prezzo"];
                 this.columnDescrizione = base.Columns["Descrizione"];
-                this.columnisActive = base.Columns["isActive"];
+                this.columnStato = base.Columns["Stato"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -454,8 +454,8 @@ namespace TestGestionale {
                 base.Columns.Add(this.columnPrezzo);
                 this.columnDescrizione = new global::System.Data.DataColumn("Descrizione", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDescrizione);
-                this.columnisActive = new global::System.Data.DataColumn("isActive", typeof(bool), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnisActive);
+                this.columnStato = new global::System.Data.DataColumn("Stato", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnStato);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnID}, true));
                 this.columnID.AutoIncrement = true;
@@ -469,7 +469,7 @@ namespace TestGestionale {
                 this.columnPrezzo.AllowDBNull = false;
                 this.columnDescrizione.AllowDBNull = false;
                 this.columnDescrizione.MaxLength = 2147483647;
-                this.columnisActive.AllowDBNull = false;
+                this.columnStato.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -656,12 +656,12 @@ namespace TestGestionale {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            public bool isActive {
+            public bool Stato {
                 get {
-                    return ((bool)(this[this.tableDemoTB.isActiveColumn]));
+                    return ((bool)(this[this.tableDemoTB.StatoColumn]));
                 }
                 set {
-                    this[this.tableDemoTB.isActiveColumn] = value;
+                    this[this.tableDemoTB.StatoColumn] = value;
                 }
             }
         }
@@ -829,40 +829,40 @@ namespace TestGestionale.DemoDBDataSetTableAdapters {
             tableMapping.ColumnMappings.Add("Nome", "Nome");
             tableMapping.ColumnMappings.Add("Prezzo", "Prezzo");
             tableMapping.ColumnMappings.Add("Descrizione", "Descrizione");
-            tableMapping.ColumnMappings.Add("isActive", "isActive");
+            tableMapping.ColumnMappings.Add("Stato", "Stato");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
             this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[DemoTB] WHERE (([ID] = @Original_ID) AND ([Nome] = @Original_N" +
-                "ome) AND ([Prezzo] = @Original_Prezzo) AND ([isActive] = @Original_isActive))";
+                "ome) AND ([Prezzo] = @Original_Prezzo) AND ([Stato] = @Original_Stato))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Nome", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Nome", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Prezzo", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 0, "Prezzo", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_isActive", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "isActive", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Stato", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Stato", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[DemoTB] ([Nome], [Prezzo], [Descrizione], [isActive]) VALUES (" +
-                "@Nome, @Prezzo, @Descrizione, @isActive);\r\nSELECT ID, Nome, Prezzo, Descrizione," +
-                " isActive FROM DemoTB WHERE (ID = SCOPE_IDENTITY())";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[DemoTB] ([Nome], [Prezzo], [Descrizione], [Stato]) VALUES (@No" +
+                "me, @Prezzo, @Descrizione, @Stato);\r\nSELECT ID, Nome, Prezzo, Descrizione, Stato" +
+                " FROM DemoTB WHERE (ID = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Nome", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Nome", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Prezzo", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 0, "Prezzo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Descrizione", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Descrizione", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@isActive", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "isActive", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Stato", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Stato", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[DemoTB] SET [Nome] = @Nome, [Prezzo] = @Prezzo, [Descrizione] = @Descrizione, [isActive] = @isActive WHERE (([ID] = @Original_ID) AND ([Nome] = @Original_Nome) AND ([Prezzo] = @Original_Prezzo) AND ([isActive] = @Original_isActive));
-SELECT ID, Nome, Prezzo, Descrizione, isActive FROM DemoTB WHERE (ID = @ID)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[DemoTB] SET [Nome] = @Nome, [Prezzo] = @Prezzo, [Descrizione] = @Descrizione, [Stato] = @Stato WHERE (([ID] = @Original_ID) AND ([Nome] = @Original_Nome) AND ([Prezzo] = @Original_Prezzo) AND ([Stato] = @Original_Stato));
+SELECT ID, Nome, Prezzo, Descrizione, Stato FROM DemoTB WHERE (ID = @ID)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Nome", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Nome", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Prezzo", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 0, "Prezzo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Descrizione", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Descrizione", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@isActive", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "isActive", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Stato", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Stato", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Nome", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Nome", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Prezzo", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 0, "Prezzo", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_isActive", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "isActive", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Stato", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Stato", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
@@ -879,7 +879,7 @@ SELECT ID, Nome, Prezzo, Descrizione, isActive FROM DemoTB WHERE (ID = @ID)";
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT ID, Nome, Prezzo, Descrizione, isActive FROM dbo.DemoTB";
+            this._commandCollection[0].CommandText = "SELECT ID, Nome, Prezzo, Descrizione, Stato FROM dbo.DemoTB";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -940,7 +940,7 @@ SELECT ID, Nome, Prezzo, Descrizione, isActive FROM DemoTB WHERE (ID = @ID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_ID, string Original_Nome, decimal Original_Prezzo, bool Original_isActive) {
+        public virtual int Delete(int Original_ID, string Original_Nome, decimal Original_Prezzo, bool Original_Stato) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_ID));
             if ((Original_Nome == null)) {
                 throw new global::System.ArgumentNullException("Original_Nome");
@@ -949,7 +949,7 @@ SELECT ID, Nome, Prezzo, Descrizione, isActive FROM DemoTB WHERE (ID = @ID)";
                 this.Adapter.DeleteCommand.Parameters[1].Value = ((string)(Original_Nome));
             }
             this.Adapter.DeleteCommand.Parameters[2].Value = ((decimal)(Original_Prezzo));
-            this.Adapter.DeleteCommand.Parameters[3].Value = ((bool)(Original_isActive));
+            this.Adapter.DeleteCommand.Parameters[3].Value = ((bool)(Original_Stato));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -970,7 +970,7 @@ SELECT ID, Nome, Prezzo, Descrizione, isActive FROM DemoTB WHERE (ID = @ID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string Nome, decimal Prezzo, string Descrizione, bool isActive) {
+        public virtual int Insert(string Nome, decimal Prezzo, string Descrizione, bool Stato) {
             if ((Nome == null)) {
                 throw new global::System.ArgumentNullException("Nome");
             }
@@ -984,7 +984,7 @@ SELECT ID, Nome, Prezzo, Descrizione, isActive FROM DemoTB WHERE (ID = @ID)";
             else {
                 this.Adapter.InsertCommand.Parameters[2].Value = ((string)(Descrizione));
             }
-            this.Adapter.InsertCommand.Parameters[3].Value = ((bool)(isActive));
+            this.Adapter.InsertCommand.Parameters[3].Value = ((bool)(Stato));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -1005,7 +1005,7 @@ SELECT ID, Nome, Prezzo, Descrizione, isActive FROM DemoTB WHERE (ID = @ID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string Nome, decimal Prezzo, string Descrizione, bool isActive, int Original_ID, string Original_Nome, decimal Original_Prezzo, bool Original_isActive, int ID) {
+        public virtual int Update(string Nome, decimal Prezzo, string Descrizione, bool Stato, int Original_ID, string Original_Nome, decimal Original_Prezzo, bool Original_Stato, int ID) {
             if ((Nome == null)) {
                 throw new global::System.ArgumentNullException("Nome");
             }
@@ -1019,7 +1019,7 @@ SELECT ID, Nome, Prezzo, Descrizione, isActive FROM DemoTB WHERE (ID = @ID)";
             else {
                 this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(Descrizione));
             }
-            this.Adapter.UpdateCommand.Parameters[3].Value = ((bool)(isActive));
+            this.Adapter.UpdateCommand.Parameters[3].Value = ((bool)(Stato));
             this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(Original_ID));
             if ((Original_Nome == null)) {
                 throw new global::System.ArgumentNullException("Original_Nome");
@@ -1028,7 +1028,7 @@ SELECT ID, Nome, Prezzo, Descrizione, isActive FROM DemoTB WHERE (ID = @ID)";
                 this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(Original_Nome));
             }
             this.Adapter.UpdateCommand.Parameters[6].Value = ((decimal)(Original_Prezzo));
-            this.Adapter.UpdateCommand.Parameters[7].Value = ((bool)(Original_isActive));
+            this.Adapter.UpdateCommand.Parameters[7].Value = ((bool)(Original_Stato));
             this.Adapter.UpdateCommand.Parameters[8].Value = ((int)(ID));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -1050,8 +1050,8 @@ SELECT ID, Nome, Prezzo, Descrizione, isActive FROM DemoTB WHERE (ID = @ID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string Nome, decimal Prezzo, string Descrizione, bool isActive, int Original_ID, string Original_Nome, decimal Original_Prezzo, bool Original_isActive) {
-            return this.Update(Nome, Prezzo, Descrizione, isActive, Original_ID, Original_Nome, Original_Prezzo, Original_isActive, Original_ID);
+        public virtual int Update(string Nome, decimal Prezzo, string Descrizione, bool Stato, int Original_ID, string Original_Nome, decimal Original_Prezzo, bool Original_Stato) {
+            return this.Update(Nome, Prezzo, Descrizione, Stato, Original_ID, Original_Nome, Original_Prezzo, Original_Stato, Original_ID);
         }
     }
     
